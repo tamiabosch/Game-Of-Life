@@ -1,3 +1,5 @@
+<Introduce aquí tu nombre y apellidos>
+
 # Prácticas de Programación 3: Juego de la vida de Conway
 **Alumno/a:** <Introduce aquí tu nombre y apellidos>
 
