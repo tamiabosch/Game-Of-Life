@@ -5,6 +5,6 @@
 
 **DNI/NIE:** <Introduce aquí tu DNI o NIE sin la letra final, si es un NIE con la letra inicial en mayúsculas>
 
-**Curso:** 2016-17
+**Curso:** 2017-18
 
 **Grupo de prácticas:** <Introduce aquí tu grupo de prácticas>
