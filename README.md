@@ -1,6 +1,6 @@
-<LFGXNT68H>
+LFGXNT68H
 
 # Prácticas de Programación 3: Juego de la vida de Conway
-**Alumno/a:** <Tamia Bosch>
+**Alumno/a:** Tamia Bosch
 
-**Grupo de prácticas:** <Grupo 03>
+**Grupo de prácticas:** Grupo 03
