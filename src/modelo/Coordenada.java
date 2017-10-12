@@ -78,7 +78,20 @@ public class Coordenada {
         if (x != that.x) return false;
         return y == that.y;
     }
+    
+    /* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + x;
+		result = prime * result + y;
+		return result;
+	}
 
+    
     /**
      * getter for x coordinate
      * @return int x
@@ -87,7 +100,7 @@ public class Coordenada {
         return x;
     }
 
-    /**
+	/**
      * getter for y coordinate
      * @return int y
      */
