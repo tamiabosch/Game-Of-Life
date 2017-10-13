@@ -3,9 +3,20 @@ package modelo;
 import java.util.Collection;
 
 public class Patron {
+	/**
+	 * Name of Patron
+	 */
 	private String nombre;
+	/**
+	 * the tablero of patron
+	 */
 	private Tablero tablero;
 	
+	/**
+	 * Constructor for Patron with:
+	 * @param nombre name of Patron
+	 * @param tablero 
+	 */
 	public Patron (String nombre, Tablero tablero) {
 		this.nombre = nombre;
 		this.tablero = tablero;
@@ -42,10 +53,16 @@ public class Patron {
 			for (int j = 0; i < sizeY+2; j++) {
 				if (i==0 && j == 0 || i == sizeX+2 && j == 0 || i == 0 && j == sizeY+2 || i == sizeX+2 && j == sizeY+2) {
 					result += "+"; 
+					if (i == sizeX+2){
+					result += "\n";	
+					}
 				} else if (j == 0 || j == sizeY+2) {
 					result = "-";
 				}else if (i == 0 || i == sizeX+2) {
 					result = "|";
+					if (i == sizeX+2) {
+						result += "\n";
+					}
 				} else if (this.getCelda(new Coordenada(i+1,j+1)) == EstadoCelda.MUERTA) {
 					result += " ";
 				}else if (this.getCelda(new Coordenada(i+1,j+1)) == EstadoCelda.VIVA) {
