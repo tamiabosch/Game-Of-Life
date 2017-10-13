@@ -48,8 +48,70 @@ public class Tablero {
 			}
 			return vecinas;
 		}
+		
+		public boolean cargaPatron(Patron patron, Coordenada coordenadaInicial) {
+			boolean ok = false;
+			Coordenada lastCoordenada = patron.getTablero().getDimensiones();
+			int xSumaCoordenada = coordenadaInicial.suma(lastCoordenada).getX();
+			int ySumaCoordenada = coordenadaInicial.suma(lastCoordenada).getY();
+			int xCoordenadaDim = this.getDimensiones().getX();		//wahrscheinlich dim des juegos benutzten!!!
+			int yCoordenadaDim = this.getDimensiones().getY();
+			if(xSumaCoordenada  <= xCoordenadaDim && ySumaCoordenada <= yCoordenadaDim) {
+				ok = true;
+				return ok;
+			} else {
+				//wenn es übers eck geht..
+				Coordenada cOut = new Coordenada(xSumaCoordenada - xCoordenadaDim, ySumaCoordenada - yCoordenadaDim);
+				muestraErrorPosicionInvalida(cOut);
+				return ok;
+			}
+		}
+		
+		@Override
+		public String toString() {
+			String result = "";
+			int sizeX = this.getDimensiones().getX();
+			int sizeY = this.getDimensiones().getY();
+			for(int i = 0; i < sizeX+2; i++) {
+				for (int j = 0; i < sizeY+2; j++) {
+					if (i==0 && j == 0 || i == sizeX+2 && j == 0 || i == 0 && j == sizeY+2 || i == sizeX+2 && j == sizeY+2) {
+						result += "+"; 
+						if (i == sizeX+2){
+						result += "\n";	
+						}
+					} else if (j == 0 || j == sizeY+2) {
+						result = "-";
+					}else if (i == 0 || i == sizeX+2) {
+						result = "|";
+						if (i == sizeX+2) {
+							result += "\n";
+						}
+					} else if (this.getCelda(new Coordenada(i+1,j+1)) == EstadoCelda.MUERTA) {
+						result += " ";
+					}else if (this.getCelda(new Coordenada(i+1,j+1)) == EstadoCelda.VIVA) {
+						result += "*";
+					}
+				}
+			}
+			return result;
+		}
+		public boolean contiene(Coordenada posicion) {
+			if (celdas.get(posicion) != null) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 		private void muestraErrorPosicionInvalida(Coordenada c) {
 			System.err.println("Error: La celda (" + c.getX() + "," +  c.getY() + "no existe");
+		}
+		
+		/**
+		 * 
+		 * @return
+		 */
+		public Collection<Coordenada> getPosiciones() {
+			return celdas.keySet();
 		}
 		
 		public EstadoCelda getCelda(Coordenada posicion) {
@@ -59,14 +121,6 @@ public class Tablero {
 			} else {
 				return celdas.get(posicion);
 			}
-		}
-		
-		/**
-		 * 
-		 * @return
-		 */
-		public Collection<Coordenada> getPosiciones() {
-			return celdas.keySet();
 		}
 		
 		/**
