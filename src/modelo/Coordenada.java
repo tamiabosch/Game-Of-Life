@@ -79,8 +79,8 @@ public class Coordenada {
         return y == that.y;
     }
     
-    /* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
+	/**
+	 * Overrides hashCode() method and gives back an int
 	 */
 	@Override
 	public int hashCode() {
