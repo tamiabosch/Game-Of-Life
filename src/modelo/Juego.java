@@ -58,7 +58,7 @@ public class Juego {
 	public void actualiza() {
 		HashMap<Coordenada, EstadoCelda> evolution = new HashMap<Coordenada, EstadoCelda>();
 		for( int i = 0; i < tablero.getDimensiones().getX(); i++) {
-			for( int j = 1; j < tablero.getDimensiones().getY(); j++ ) {
+			for( int j = 0; j < tablero.getDimensiones().getY(); j++ ) {
 				Coordenada newCoordenada = new Coordenada (i,j);
 				EstadoCelda newEstado = regla.calculaSiguienteEstadoCelda(tablero, newCoordenada);
 				evolution.put(newCoordenada, newEstado);
