@@ -19,6 +19,11 @@ public class Tablero {
 		private Coordenada dimensiones;
 		
 		/**
+		 * lates coordenada of tablero which does not fit into the pattern
+		 */
+		private Coordenada notFittingC;
+		
+		/**
 		 * constructor of Tablero
 		 * initialises new dead celdas with hashmap
 		 * @param dimensiones
@@ -83,6 +88,7 @@ public class Tablero {
 			} else {
 				//wenn es übers eck geht..
 				Coordenada cOut = new Coordenada(xSumaCoordenada - xCoordenadaDim, ySumaCoordenada - yCoordenadaDim);
+				notFittingC = cOut;
 				muestraErrorPosicionInvalida(cOut);
 				return ok;
 			}
@@ -138,7 +144,7 @@ public class Tablero {
 		 * @param coordenada wohich doesn't fit into the board
 		 */
 		private void muestraErrorPosicionInvalida(Coordenada c) {
-			System.err.println("Error: La celda (" + c.getX() + "," +  c.getY() + "no existe");
+			System.err.println("Error: La celda (" + c.getX() + "," +  c.getY() + ") no existe");
 		}
 		
 		/**
@@ -169,6 +175,14 @@ public class Tablero {
 		 **/
 		public Coordenada getDimensiones() {
 			return dimensiones;
+		}
+		
+		/**
+		 * Getter
+		 */
+		public Coordenada getNotFittingC() {
+			return notFittingC;
+
 		}
 		
 		/**
