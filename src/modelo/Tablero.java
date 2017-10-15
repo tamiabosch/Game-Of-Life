@@ -81,13 +81,13 @@ public class Tablero {
 			int xSumaCoordenada = coordenadaInicial.suma(lastCoordenada).getX();
 			int ySumaCoordenada = coordenadaInicial.suma(lastCoordenada).getY();
 			int xCoordenadaDim = this.getDimensiones().getX();		//wahrscheinlich dim des juegos benutzten!!!
-			int yCoordenadaDim = this.getDimensiones().getY();
+			int yCoordenadaDim = this.getDimensiones().getY();		//pat--tab xDimTab
 			if(xSumaCoordenada  <= xCoordenadaDim && ySumaCoordenada <= yCoordenadaDim) {
 				ok = true;
 				return ok;
 			} else {
 				//wenn es übers eck geht..
-				Coordenada cOut = new Coordenada(xSumaCoordenada - xCoordenadaDim, ySumaCoordenada - yCoordenadaDim);
+				Coordenada cOut = new Coordenada(lastCoordenada.getX() - xCoordenadaDim, lastCoordenada.getY() - yCoordenadaDim);
 				notFittingC = cOut;
 				muestraErrorPosicionInvalida(cOut);
 				return ok;
@@ -103,7 +103,7 @@ public class Tablero {
 			int sizeX = this.getDimensiones().getX();
 			int sizeY = this.getDimensiones().getY();
 			for(int i = 0; i < sizeX+2; i++) {
-				for (int j = 0; i < sizeY+2; j++) {
+				for (int j = 0; j < sizeY+2; j++) {
 					if (i==0 && j == 0 || i == sizeX+2 && j == 0 || i == 0 && j == sizeY+2 || i == sizeX+2 && j == sizeY+2) {
 						result += "+"; 
 						if (i == sizeX+2){
