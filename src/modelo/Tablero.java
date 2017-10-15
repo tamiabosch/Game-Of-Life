@@ -4,10 +4,25 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
+/**
+ * Tablero initialises a HashMap with dead cells and gives various method to change the state of the cells  
+ * @author Tamia Bosch
+ */
 public class Tablero {
+		/**
+		 * HashMap with coordenadas as key an Estado Celdas as value
+		 */
 		private HashMap<Coordenada, EstadoCelda> celdas;
+		/**
+		 * dimensiones, Coordenada from the bottom right
+		 */
 		private Coordenada dimensiones;
 		
+		/**
+		 * constructor of Tablero
+		 * initialises new dead celdas with hashmap
+		 * @param dimensiones
+		 */
 		public Tablero(Coordenada dimensiones) {
 			this.dimensiones = dimensiones;
 			celdas = new HashMap<Coordenada, EstadoCelda>();
@@ -21,9 +36,9 @@ public class Tablero {
 		}
 		
 		/**
-		 * 
+		 * Returns all neighbours of a Coordenada in an ArrayList
 		 * @param posicion
-		 * @return 
+		 * @return ArrayList with neighbours
 		 */
 		public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) {
 			ArrayList<Coordenada> vecinas = new ArrayList<Coordenada>();
@@ -49,6 +64,12 @@ public class Tablero {
 			return vecinas;
 		}
 		
+		/**
+		 * checks if the Patron fits into the Tablero
+		 * @param patron
+		 * @param coordenadaInicial
+		 * @return if it fits or not
+		 */
 		public boolean cargaPatron(Patron patron, Coordenada coordenadaInicial) {
 			boolean ok = false;
 			Coordenada lastCoordenada = patron.getTablero().getDimensiones();
@@ -67,6 +88,9 @@ public class Tablero {
 			}
 		}
 		
+		/**
+		 * Overrides toString() method and gives back a string with a string representation of the tablero
+		 */
 		@Override
 		public String toString() {
 			String result = "";
@@ -95,6 +119,12 @@ public class Tablero {
 			}
 			return result;
 		}
+		
+		/**
+		 * checks if the tablero contains a certain coordenada
+		 * @param posicion
+		 * @return boolean 
+		 */
 		public boolean contiene(Coordenada posicion) {
 			if (celdas.get(posicion) != null) {
 				return true;
@@ -102,18 +132,28 @@ public class Tablero {
 				return false;
 			}
 		}
+		
+		/**
+		 * error message, specifically concerning one coordenada
+		 * @param coordenada wohich doesn't fit into the board
+		 */
 		private void muestraErrorPosicionInvalida(Coordenada c) {
 			System.err.println("Error: La celda (" + c.getX() + "," +  c.getY() + "no existe");
 		}
 		
 		/**
-		 * 
-		 * @return
+		 * returns all the Coordenadas of the Celdas
+		 * @return Collection of keySet
 		 */
 		public Collection<Coordenada> getPosiciones() {
 			return celdas.keySet();
 		}
 		
+		/**
+		 * returns if the celda is dead or alive
+		 * @param posicion
+		 * @return EstadoCelda
+		 */
 		public EstadoCelda getCelda(Coordenada posicion) {
 			if (celdas.get(posicion)==null) {
 				muestraErrorPosicionInvalida(posicion);
@@ -131,6 +171,11 @@ public class Tablero {
 			return dimensiones;
 		}
 		
+		/**
+		 * Sets posicion and status of a specific celda 
+		 * @param posicion
+		 * @param e
+		 */
 		public void setCelda(Coordenada posicion, EstadoCelda e) {
 			if (celdas.get(posicion)==null) {
 				muestraErrorPosicionInvalida(posicion);

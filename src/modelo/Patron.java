@@ -2,6 +2,10 @@ package modelo;
 
 import java.util.Collection;
 
+/**
+ * creates a pattern which you can put into the juego
+ * @author Tamia Bosch
+ */
 public class Patron {
 	/**
 	 * Name of Patron
@@ -22,27 +26,9 @@ public class Patron {
 		this.tablero = tablero;
 	}
 	
-	public EstadoCelda getCelda(Coordenada posicion) {
-		return this.tablero.getCelda(posicion);
-	}
-	
-	public Collection<Coordenada> getPosiciones() {
-		return this.tablero.getPosiciones();
-	}
-
 	/**
-	 * @return the nombre
-	 */
-	public String getNombre() {
-		return nombre;
-	}
-	
-	public Tablero getTablero() {
-		return tablero;
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	 * Overrides the toString() method and gives back a representation of the current pattern
+	 * @return name + the tablero of the cells 
 	 */
 	@Override
 	public String toString() {
@@ -71,6 +57,38 @@ public class Patron {
 			}
 		}
 		return nombre + "\n " + result;
+	}
+
+	/**
+	 * getter for the status of cells
+	 * @param posicion
+	 * @return Estado of the celdas
+	 */
+	public EstadoCelda getCelda(Coordenada posicion) {
+		return this.tablero.getCelda(posicion);
+	}
+	
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+	
+	/**
+	 * getter for the tablero of the patron
+	 * @return tablero
+	 */
+	public Tablero getTablero() {
+		return tablero;
+	}
+	
+	/**
+	 * getter for all the posiciones saved in a Collection
+	 * @return posiciones in a collection
+	 */
+	public Collection<Coordenada> getPosiciones() {
+		return this.tablero.getPosiciones();
 	}
 	
 	
