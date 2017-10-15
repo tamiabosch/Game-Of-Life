@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 public class Juego {
@@ -36,6 +37,16 @@ public class Juego {
 	public void cargaPatron(Patron p, Coordenada posicionInicial) {
 		if(tablero.cargaPatron(p, posicionInicial)) {
 			patronesUsados.add(p);
+			int startX = posicionInicial.getX();
+			int startY = posicionInicial.getY();
+			int endX = p.getTablero().getDimensiones().getX() + startX;
+			int endY = p.getTablero().getDimensiones().getY() + startY;
+			for(int i = startX; i < endX; i++) {
+				for (int j = startY; j < endY; j++) {
+					tablero.setCelda(new Coordenada(i, j), p.getCelda(new Coordenada(i-startX, j-startY)));
+				}
+			}
+		
 		} else {
 			System.err.println("Error cargando plantilla " + p.getNombre() + " en (" + tablero.getNotFittingC().getX() + "," + tablero.getNotFittingC().getY() + ")");
 		}
@@ -52,6 +63,10 @@ public class Juego {
 				EstadoCelda newEstado = regla.calculaSiguienteEstadoCelda(tablero, newCoordenada);
 				evolution.put(newCoordenada, newEstado);
 			}
+		}
+		Collection<Coordenada> collection = tablero.getPosiciones();
+		for(int i=0; i < collection.size(); i++) {
+			tablero.setCelda((Coordenada) collection.toArray()[i], evolution.get(collection.toArray()[i]));
 		}
 		
 	}
