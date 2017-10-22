@@ -8,5 +8,9 @@ package modelo;
  * @author Tamia Bosch
  */
 public enum EstadoCelda {
-		MUERTA, VIVA
+		
+		/** The muerta cell. */
+		MUERTA, 
+ /** The viva cell. */
+ VIVA
 }

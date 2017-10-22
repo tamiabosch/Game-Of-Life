@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
+/**
+ * Class Juego with a tablero and reglaConway
+ * @author Tami
+ *
+ */
 public class Juego {
 	/**
 	 * Juego has a Tablero

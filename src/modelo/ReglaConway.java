@@ -2,8 +2,20 @@ package modelo;
 
 import java.util.ArrayList;
 
+/**
+ * defines  the rules if a cell lives or not depending on the neighbours
+ * @author Tami
+ *
+ */
 public class ReglaConway {
 
+	/**
+	 * Calculates the state of the celdas depending on it's neighbours
+	 *
+	 * @param tablero the tablero
+	 * @param posicion the posicion
+	 * @return the estado celda
+	 */
 	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) {
 		ArrayList<Coordenada> vecinas = tablero.getPosicionesVecinasCCW(posicion);
 		int numberVecinas = 0;
