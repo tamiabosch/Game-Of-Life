@@ -18,14 +18,8 @@ public class ReglaConway {
 	 */
 	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) {
 		ArrayList<Coordenada> vecinas = tablero.getPosicionesVecinasCCW(posicion);
-		int numberVecinas = 0;
 		int aliveNeigbours = 0;
-	
-		for (Coordenada coord : vecinas) {
-			if(coord != null) {
-				numberVecinas ++;
-			}
-		}
+
 		for (Coordenada coord : vecinas) {
 			if(coord != null && tablero.getCelda(coord) == EstadoCelda.VIVA) {
 				aliveNeigbours++;

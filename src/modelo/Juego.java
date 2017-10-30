@@ -42,15 +42,7 @@ public class Juego {
 	public void cargaPatron(Patron p, Coordenada posicionInicial) {
 		if(tablero.cargaPatron(p, posicionInicial)) {
 			patronesUsados.add(p);
-			int startX = posicionInicial.getX();
-			int startY = posicionInicial.getY();
-			int endX = p.getTablero().getDimensiones().getX() + startX;
-			int endY = p.getTablero().getDimensiones().getY() + startY;
-			for(int i = startX; i < endX; i++) {
-				for (int j = startY; j < endY; j++) {
-					tablero.setCelda(new Coordenada(i, j), p.getCelda(new Coordenada(i-startX, j-startY)));
-				}
-			}
+			
 		
 		} else {
 			System.err.println("Error cargando plantilla " + p.getNombre() + " en (" + tablero.getNotFittingC().getX() + "," + tablero.getNotFittingC().getY() + ")");

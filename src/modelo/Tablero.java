@@ -48,6 +48,10 @@ public class Tablero {
 		public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) {
  			ArrayList<Coordenada> vecinas = new ArrayList<Coordenada>();
 			Collection<Coordenada> keys = this.getPosiciones();
+			// Sind die Dimensionen der Tablero kleiner als die Koordinate? Dann null :)
+			if (posicion.getX() < 0 || posicion.getY() < 0 || dimensiones.getX() <= posicion.getX() || dimensiones.getY() <= posicion.getY()) {
+				return null;
+			}
 			for (int i = -1; i < 2; i++ ) {
 				Coordenada vecina = new Coordenada(posicion.getX()-1, posicion.getY()+i);
 				for (Coordenada coordenada : keys) {
@@ -94,7 +98,7 @@ public class Tablero {
 		 * checks if the Patron fits into the Tablero
 		 * @param patron
 		 * @param coordenadaInicial
-		 * @return if it fits or not
+		 * @return if patron fits or not
 		 */
 		public boolean cargaPatron(Patron patron, Coordenada coordenadaInicial) {
 			boolean ok = false;
@@ -103,14 +107,31 @@ public class Tablero {
 			int ySumaCoordenada = coordenadaInicial.suma(lastCoordenada).getY();
 			int xCoordenadaDim = this.getDimensiones().getX();		//wahrscheinlich dim des juegos benutzten!!!
 			int yCoordenadaDim = this.getDimensiones().getY();		//pat--tab xDimTab
-			if(xSumaCoordenada  <= xCoordenadaDim && ySumaCoordenada <= yCoordenadaDim) {
+			if (coordenadaInicial.getX() < 0 || coordenadaInicial.getY() < 0) {
+				Coordenada cOut = coordenadaInicial;
+				notFittingC = cOut;
+				muestraErrorPosicionInvalida(cOut);
+				return ok;
+			}
+			else if(xSumaCoordenada  <= xCoordenadaDim && ySumaCoordenada <= yCoordenadaDim) {
 				ok = true;
+				
+				int startX = coordenadaInicial.getX();
+				int startY = coordenadaInicial.getY();
+				int endX = patron.getTablero().getDimensiones().getX() + startX;
+				int endY = patron.getTablero().getDimensiones().getY() + startY;
+				for(int i = startX; i < endX; i++) {
+					for (int j = startY; j < endY; j++) {
+						this.setCelda(new Coordenada(i, j), patron.getCelda(new Coordenada(i-startX, j-startY)));
+					}
+				}
+				
 				return ok;
 			} else {
 				//wenn es übers eck geht..
 				Coordenada cOut = new Coordenada(lastCoordenada.getX() - xCoordenadaDim, lastCoordenada.getY() - yCoordenadaDim);
-				notFittingC = cOut;
-				muestraErrorPosicionInvalida(cOut);
+				notFittingC = coordenadaInicial;
+				muestraErrorPosicionInvalida(coordenadaInicial);
 				return ok;
 			}
 		}
