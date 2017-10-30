@@ -46,27 +46,48 @@ public class Tablero {
 		 * @return ArrayList with neighbours
 		 */
 		public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) {
-			ArrayList<Coordenada> vecinas = new ArrayList<Coordenada>();
+ 			ArrayList<Coordenada> vecinas = new ArrayList<Coordenada>();
 			Collection<Coordenada> keys = this.getPosiciones();
 			for (int i = -1; i < 2; i++ ) {
-				for (int j = -1; j < 2; j++) {
-					if (!(i == 0 && j == 0)) {
-						Coordenada vecina = new Coordenada(posicion.getX()+i, posicion.getY()+j);
-						boolean found = false;
-						for (Coordenada coordenada : keys) {
-							if (vecina.equals(coordenada)) {
-								vecinas.add(vecina);
-								found = true;
-							} 
-						} 
-						if(!found) {
-							vecinas.add(null);
-						}
-
-					}
-				}
+				Coordenada vecina = new Coordenada(posicion.getX()-1, posicion.getY()+i);
+				for (Coordenada coordenada : keys) {
+					if (vecina.equals(coordenada)) {
+						vecinas.add(vecina);
+		
+					} 
+				} 
+				
 			}
-			return vecinas;
+			Coordenada vecina01 = new Coordenada(posicion.getX(),posicion.getY()+1);
+			for (Coordenada coordenada : keys) {
+				if (vecina01.equals(coordenada)) {
+					vecinas.add(vecina01);
+	
+				} 
+			} 
+			
+			//rechte Seite
+			for (int i = 1; i > -2; i-- ) {
+				Coordenada vecina = new Coordenada(posicion.getX()+1, posicion.getY()+i);
+				for (Coordenada coordenada : keys) {
+					if (vecina.equals(coordenada)) {
+						vecinas.add(vecina);
+		
+					} 
+				} 
+				
+			}
+			
+			Coordenada vecina0_1 = new Coordenada(posicion.getX(),posicion.getY()+-1);
+			for (Coordenada coordenada : keys) {
+				if (vecina0_1.equals(coordenada)) {
+					vecinas.add(vecina0_1);
+				} 
+			} 
+			
+            
+          return vecinas;
+
 		}
 		
 		/**
