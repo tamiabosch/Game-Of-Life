@@ -3,6 +3,11 @@
  */
 package modelo;
 
+import jdk.jfr.events.ExceptionThrownEvent;
+import modelo.excepciones.ExcepcionArgumentosIncorrectos;
+import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
+import modelo.excepciones.ExcepcionPosicionFueraTablero;
+
 /**
  * Coordenada creates a coordinate with x and y value
  * it also counts the created Coordenadas with NUMERO_COORDENADAS
@@ -27,22 +32,34 @@ public class Coordenada {
      * NUMERO_COORDENADAS is increased
      * @param x int coordinate
      * @param y int coordinate
+     * @throws ExcepcionCoordenadaIncorrecta 
      */
-    public Coordenada(int x, int y) {
-        this.x = x;
-        this.y = y;
-        NUMERO_COORDENADAS++;
+    public Coordenada(int x, int y) throws ExcepcionCoordenadaIncorrecta {
+    	if(x >= 0 || y >= 0) {
+            this.x = x;
+            this.y = y;
+            NUMERO_COORDENADAS++;
+    	} else {
+    		throw new ExcepcionCoordenadaIncorrecta();
+    	}
+
     }
 
     /**
      * Constructor for Coordenada copying an other coordenate
      * NUMERO_COORDENADAS is increased
      * @param otra Coordenada
+     * @throws ExcepcionCoordenadaIncorrecta 
      */
-    public Coordenada(Coordenada otra) {
-        this.x = otra.getX();
-        this.y = otra.getY();
-        NUMERO_COORDENADAS++;
+    public Coordenada(Coordenada otra) throws ExcepcionArgumentosIncorrectos  {
+    	if(otra!=null) {
+            this.x = otra.getX();
+            this.y = otra.getY();
+            NUMERO_COORDENADAS++;
+    	} else {
+    		throw new ExcepcionArgumentosIncorrectos ("Wrong Argument: Failed initializing a Coordenada");
+    	}
+
     }
 
     /**
@@ -112,8 +129,17 @@ public class Coordenada {
      * Is summarising the x and y values of two Coordenada Objects
      * @param otra Coordenada
      * @return new Coordenada
+     * @throws ExcepcionCoordenadaIncorrecta 
      */
-    public Coordenada suma(Coordenada otra) {
-        return new Coordenada(this.x + otra.getX(), this.y + otra.getY());
+    public Coordenada suma(Coordenada otra) throws ExcepcionArgumentosIncorrectos {
+    	if (otra == null) {
+    		throw new ExcepcionArgumentosIncorrectos("Wrong Argument: the suma method couldn't be excecuted because the Coordenada was null");
+    	}
+    	try {
+    		return new Coordenada(this.x + otra.getX(), this.y + otra.getY());
+    	} catch (ExcepcionCoordenadaIncorrecta e) {
+    		e.printStackTrace();
+    		return null;
+    	}
     }
 }
