@@ -164,31 +164,42 @@ public class Tablero {
 		 */
 		@Override
 		public String toString() {
-			String result = "";
-			int sizeX = this.getDimensiones().getX();
-			int sizeY = this.getDimensiones().getY();
-			for(int j = 0; j <= sizeY+1; j++) {
-				for (int i = 0; i <= sizeX+1; i++) {
-					if (i==0 && j == 0 || i == sizeX+1 && j == 0 || i == 0 && j == sizeY+1 || i == sizeX+1 && j == sizeY+1) {
-						result += "+"; 
-						if (i == sizeX+1){
-						result += "\n";	
+			try {
+				String result = "";
+				int sizeX = this.getDimensiones().getX();
+				int sizeY = this.getDimensiones().getY();
+				for(int j = 0; j <= sizeY+1; j++) {
+					for (int i = 0; i <= sizeX+1; i++) {
+						if (i==0 && j == 0 || i == sizeX+1 && j == 0 || i == 0 && j == sizeY+1 || i == sizeX+1 && j == sizeY+1) {
+							result += "+"; 
+							if (i == sizeX+1){
+							result += "\n";	
+							}
+						} else if (j == 0 || j == sizeY+1) {
+							result += "-";
+						}else if (i == 0 || i == sizeX+1) {
+							result += "|";
+							if (i == sizeX+1) {
+								result += "\n";
+							}
+						} else if (this.getCelda(new Coordenada(i-1,j-1)) == EstadoCelda.MUERTA) {
+							result += " ";
+						}else if (this.getCelda(new Coordenada(i-1,j-1)) == EstadoCelda.VIVA) {
+							result += "*";
 						}
-					} else if (j == 0 || j == sizeY+1) {
-						result += "-";
-					}else if (i == 0 || i == sizeX+1) {
-						result += "|";
-						if (i == sizeX+1) {
-							result += "\n";
-						}
-					} else if (this.getCelda(new Coordenada(i-1,j-1)) == EstadoCelda.MUERTA) {
-						result += " ";
-					}else if (this.getCelda(new Coordenada(i-1,j-1)) == EstadoCelda.VIVA) {
-						result += "*";
 					}
 				}
+				return result;
+				
+				//ob das stimmt wird sich zeigen...??
+			} catch(ExcepcionCoordenadaIncorrecta e) {
+				throw new ExcepcionEjecucion(e);
+			} catch(ExcepcionArgumentosIncorrectos e) {
+				throw new ExcepcionEjecucion(e);
+			} catch(ExcepcionPosicionFueraTablero e) {
+				throw new ExcepcionEjecucion(e);
 			}
-			return result;
+			
 		}
 		
 		/**
