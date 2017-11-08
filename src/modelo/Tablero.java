@@ -64,41 +64,50 @@ public class Tablero {
 					if (posicion.getX() < 0 || posicion.getY() < 0 || dimensiones.getX() <= posicion.getX() || dimensiones.getY() <= posicion.getY()) {
 						return null;
 					}
+					
 					for (int i = -1; i < 2; i++ ) {
-						Coordenada vecina = new Coordenada(posicion.getX()-1, posicion.getY()+i);
+						if(posicion.getX()-1 >=0 && posicion.getY()+i >= 0) {
+							Coordenada vecina = new Coordenada(posicion.getX()-1, posicion.getY()+i);
+							for (Coordenada coordenada : keys) {
+								if (vecina.equals(coordenada)) {
+									vecinas.add(vecina);
+					
+								} 
+							} 	
+						}
+					}
+					
+					if(posicion.getX() >= 0 && posicion.getY()+1 >= 0) {
+						Coordenada vecina01 = new Coordenada(posicion.getX(),posicion.getY()+1);
 						for (Coordenada coordenada : keys) {
-							if (vecina.equals(coordenada)) {
-								vecinas.add(vecina);
+							if (vecina01.equals(coordenada)) {
+								vecinas.add(vecina01);
 				
 							} 
-						} 
-						
+						}
 					}
-					Coordenada vecina01 = new Coordenada(posicion.getX(),posicion.getY()+1);
-					for (Coordenada coordenada : keys) {
-						if (vecina01.equals(coordenada)) {
-							vecinas.add(vecina01);
-			
-						} 
-					} 
+ 
 					
 					//rechte Seite
 					for (int i = 1; i > -2; i-- ) {
-						Coordenada vecina = new Coordenada(posicion.getX()+1, posicion.getY()+i);
-						for (Coordenada coordenada : keys) {
-							if (vecina.equals(coordenada)) {
-								vecinas.add(vecina);
-				
-							} 
-						} 
-						
+						if(posicion.getX()+1 >= 0 && posicion.getY()+i >= 0) {
+							Coordenada vecina = new Coordenada(posicion.getX()+1, posicion.getY()+i);
+							for (Coordenada coordenada : keys) {
+								if (vecina.equals(coordenada)) {
+									vecinas.add(vecina);
+					
+								} 
+							} 	
+						}
 					}
 					
-					Coordenada vecina0_1 = new Coordenada(posicion.getX(),posicion.getY()+-1);
-					for (Coordenada coordenada : keys) {
-						if (vecina0_1.equals(coordenada)) {
-							vecinas.add(vecina0_1);
-						} 
+					if(posicion.getX() >= 0 && posicion.getY()+-1 >= 0) {
+						Coordenada vecina0_1 = new Coordenada(posicion.getX(),posicion.getY()+-1);
+						for (Coordenada coordenada : keys) {
+							if (vecina0_1.equals(coordenada)) {
+								vecinas.add(vecina0_1);
+							} 
+						}
 					} 
 					
 		          return vecinas;
