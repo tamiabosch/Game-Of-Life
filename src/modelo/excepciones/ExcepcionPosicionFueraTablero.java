@@ -20,9 +20,9 @@ public class ExcepcionPosicionFueraTablero extends Exception {
 	
 	//TODO: gscheide nachricht
 	public String getMessage() {
-		return"Error in: ExcepcionPosicionFueraTablero \n "
+		return" ExcepcionPosicionFueraTablero: \n "
 				+ "The tablero has the size "+ dimensiones.getX() +"x" + dimensiones.getY()
-						+ "\n but the Coordenada is at (" + coordenada.getX() + ","+ coordenada.getY()  +")";
+						+ " but the Coordenada is at (" + coordenada.getX() + ","+ coordenada.getY()  +")";
 	}
 
 	/**
