@@ -10,15 +10,28 @@ import modelo.Coordenada;
  *
  */
 public class ExcepcionPosicionFueraTablero extends Exception {
+	
+	/** The dimensiones. */
 	private Coordenada dimensiones;
+	
+	/** The coordenada. */
 	private Coordenada coordenada;
 	
+	/**
+	 * Instantiates a new excepcion posicion fuera tablero.
+	 *
+	 * @param dimensiones the dimensiones
+	 * @param coorrdenada the coorrdenada
+	 */
 	public ExcepcionPosicionFueraTablero(Coordenada dimensiones, Coordenada coorrdenada) {
 		this.dimensiones = dimensiones;
 		this.coordenada = coorrdenada;
 	}
 	
-	//TODO: gscheide nachricht
+
+	/**
+	 * prints out Error Message
+	 */
 	public String getMessage() {
 		return" ExcepcionPosicionFueraTablero: \n "
 				+ "The tablero has the size "+ dimensiones.getX() +"x" + dimensiones.getY()
