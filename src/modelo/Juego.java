@@ -60,6 +60,7 @@ public class Juego {
 			int yCoordenadaDim = tablero.getDimensiones().getY();
 			if(posicionInicial.getX() >= 0 || posicionInicial.getY() >= 0 || (xSumaCoordenada  <= xCoordenadaDim && ySumaCoordenada <= yCoordenadaDim)) {
 				patronesUsados.add(p);
+				tablero.cargaPatron(p, posicionInicial);
 			
 			} else {
 				throw new ExcepcionPosicionFueraTablero(tablero.getDimensiones(), posicionInicial);
