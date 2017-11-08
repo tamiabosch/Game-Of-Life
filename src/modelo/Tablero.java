@@ -34,7 +34,7 @@ public class Tablero {
 		 * @param dimensiones
 		 */
 		public Tablero(Coordenada dimensiones) {
-			this.dimensiones = dimensiones;
+			this.dimensiones = new Coordenada (dimensiones);
 			celdas = new HashMap<Coordenada, EstadoCelda>();
 			for (int i = 0; i < dimensiones.getX(); i++) {
 				for (int j = 0; j < dimensiones.getY(); j++) {
@@ -123,7 +123,7 @@ public class Tablero {
 		}
 		
 		/**
-		 * checks if the Patron fits into the Tablero
+		 * checks if the Patron fits into the Tablero and adds the patron into the tablero
 		 * @param patron
 		 * @param coordenadaInicial
 		 * @return if patron fits or not
@@ -131,7 +131,7 @@ public class Tablero {
 		 */
 		public void cargaPatron(Patron patron, Coordenada coordenadaInicial) throws ExcepcionPosicionFueraTablero {
 			if(patron != null && coordenadaInicial != null) {
-				try {
+
 					Coordenada lastCoordenada = patron.getTablero().getDimensiones();
 					int xSumaCoordenada = coordenadaInicial.suma(lastCoordenada).getX();
 					int ySumaCoordenada = coordenadaInicial.suma(lastCoordenada).getY();
@@ -148,20 +148,22 @@ public class Tablero {
 						int endY = patron.getTablero().getDimensiones().getY() + startY;
 						for(int i = startX; i < endX; i++) {
 							for (int j = startY; j < endY; j++) {
-								this.setCelda(new Coordenada(i, j), patron.getCelda(new Coordenada(i-startX, j-startY)));
+								//ExcepcionCoordenadaIncorrecta wird nur hier gecatched weil es sonst nirgends nötig ist
+								try {
+									this.setCelda(new Coordenada(i, j), patron.getCelda(new Coordenada(i-startX, j-startY)));
+								}  catch (ExcepcionCoordenadaIncorrecta e) {
+									throw new ExcepcionEjecucion(e);
+								}
 							}
 						}
 						
 					} else {
 						//wenn es übers eck geht..
-						Coordenada cOut = new Coordenada(lastCoordenada.getX() - xCoordenadaDim, lastCoordenada.getY() - yCoordenadaDim);
+						//Coordenada cOut = new Coordenada(lastCoordenada.getX() - xCoordenadaDim, lastCoordenada.getY() - yCoordenadaDim);
 						notFittingC = coordenadaInicial;
 						throw new ExcepcionPosicionFueraTablero(this.getDimensiones(), coordenadaInicial);
 					}
 					
-				} catch (ExcepcionCoordenadaIncorrecta e) {
-					throw new ExcepcionEjecucion(e);
-				}
 			} else {
 				throw new ExcepcionArgumentosIncorrectos("Coordenada or Patron is null!");
 			}
