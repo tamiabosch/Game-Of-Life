@@ -1,3 +1,6 @@
+/**
+ * Tablero in package modelo
+ */
 package modelo;
 
 import java.util.ArrayList;

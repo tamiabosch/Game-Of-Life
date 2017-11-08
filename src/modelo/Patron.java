@@ -92,6 +92,7 @@ public class Patron {
 	}
 	
 	/**
+	 * String of the name of patron
 	 * @return the nombre
 	 */
 	public String getNombre() {
