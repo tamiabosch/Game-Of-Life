@@ -35,7 +35,7 @@ public class Coordenada {
      * @throws ExcepcionCoordenadaIncorrecta 
      */
     public Coordenada(int x, int y) throws ExcepcionCoordenadaIncorrecta {
-    	if(x >= 0 || y >= 0) {
+    	if(x >= 0 && y >= 0) {
             this.x = x;
             this.y = y;
             NUMERO_COORDENADAS++;
