@@ -7,7 +7,7 @@ package modelo.excepciones;
  * @author Tami
  *
  */
-public class ExcepcionCoodenada2DIncorrecta extends ExcepcionCoordenadaIncorrecta {
+public class ExcepcionCoordenada2DIncorrecta extends ExcepcionCoordenadaIncorrecta {
 	
 	/** The x. */
 	private int x;
@@ -21,7 +21,7 @@ public class ExcepcionCoodenada2DIncorrecta extends ExcepcionCoordenadaIncorrect
 	 * @param x the x
 	 * @param y the y
 	 */
-	public ExcepcionCoodenada2DIncorrecta(int x, int y) {
+	public ExcepcionCoordenada2DIncorrecta(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}

@@ -3,17 +3,15 @@
  */
 package modelo;
 
-import jdk.jfr.events.ExceptionThrownEvent;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
+import modelo.excepciones.ExcepcionCoordenada2DIncorrecta;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
-import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
 /**
  * Coordenada creates a coordinate with x and y value
- * it also counts the created Coordenadas with NUMERO_COORDENADAS
  * @author Tamia Bosch
  */
-public class Coordenada {
+public class Coordenada2D extends Coordenada {
     /**
      * private instancevariable x
      */
@@ -22,52 +20,36 @@ public class Coordenada {
      * private instancevariable y
      */
     private int y;
-    /**
-     * private and static instancevariable already initalized
-     */
-    private static int NUMERO_COORDENADAS = 0;
-
+  
     /**
      * Constructor for Coordenada using an x and y coordinate
-     * NUMERO_COORDENADAS is increased
      * @param x int coordinate
      * @param y int coordinate
-     * @throws ExcepcionCoordenadaIncorrecta 
+     * @throws ExcepcionCoordenada2DIncorrecta 
      */
-    public Coordenada(int x, int y) throws ExcepcionCoordenadaIncorrecta {
+    public Coordenada2D(int x, int y) throws ExcepcionCoordenadaIncorrecta  {
     	if(x >= 0 && y >= 0) {
             this.x = x;
             this.y = y;
-            NUMERO_COORDENADAS++;
     	} else {
-    		throw new ExcepcionCoordenadaIncorrecta();
+    		throw new ExcepcionCoordenada2DIncorrecta(x,y);
     	}
 
     }
 
     /**
      * Constructor for Coordenada copying an other coordenate
-     * NUMERO_COORDENADAS is increased
      * @param otra Coordenada
      * @throws ExcepcionCoordenadaIncorrecta 
      */
-    public Coordenada(Coordenada otra) throws ExcepcionArgumentosIncorrectos  {
+    public Coordenada2D(Coordenada2D otra) throws ExcepcionArgumentosIncorrectos  {
     	if(otra!=null) {
             this.x = otra.getX();
             this.y = otra.getY();
-            NUMERO_COORDENADAS++;
     	} else {
     		throw new ExcepcionArgumentosIncorrectos ("Wrong Argument: Failed initializing a Coordenada");
     	}
 
-    }
-
-    /**
-     * Getter for NUMERO_COORDENADAS
-     * @return int NUMERO_COORDENADAS
-     */
-    public static int getNumeroCoordenadas() {
-        return NUMERO_COORDENADAS;
     }
 
     /**
@@ -90,7 +72,7 @@ public class Coordenada {
         if (this == otro) return true;
         if (otro == null || getClass() != otro.getClass()) return false;
 
-        Coordenada that = (Coordenada) otro;
+        Coordenada2D that = (Coordenada2D) otro;
 
         if (x != that.x) return false;
         return y == that.y;
@@ -128,17 +110,19 @@ public class Coordenada {
     /**
      * Is summarising the x and y values of two Coordenada Objects
      * @param otra Coordenada
-     * @return new Coordenada
+     * @return new Coordenada2D
      * @throws ExcepcionCoordenadaIncorrecta 
      */
-    public Coordenada suma(Coordenada otra) throws ExcepcionArgumentosIncorrectos {
+    @Override
+    public Coordenada2D suma(Coordenada otra) throws ExcepcionArgumentosIncorrectos {
+    	Coordenada2D castedOtra = (Coordenada2D) otra;
     	if (otra == null) {
     		throw new ExcepcionArgumentosIncorrectos("Wrong Argument: the suma method couldn't be excecuted because the Coordenada was null");
     	}
     	try {
-    		return new Coordenada(this.x + otra.getX(), this.y + otra.getY());
+    		return new Coordenada2D(this.x + castedOtra.getX(), this.y + castedOtra.getY());
     	} catch (ExcepcionCoordenadaIncorrecta e) {
-    		e.printStackTrace();
+    		e.getMessage();
     		return null;
     	}
     }
