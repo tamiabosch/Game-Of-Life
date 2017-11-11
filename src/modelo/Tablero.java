@@ -16,41 +16,49 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
  * Tablero initialises a HashMap with dead cells and gives various method to change the state of the cells  
  * @author Tamia Bosch
  */
-public class Tablero {
+public abstract class Tablero {
 		/**
 		 * HashMap with coordenadas as key an Estado Celdas as value
 		 */
-		private HashMap<Coordenada, EstadoCelda> celdas;
+		protected HashMap<Coordenada, EstadoCelda> celdas;
+		
 		/**
 		 * dimensiones, Coordenada from the bottom right
 		 */
-		private Coordenada dimensiones;
+		protected Coordenada dimensiones;
 		
 		/**
 		 * lates coordenada of tablero which does not fit into the pattern
 		 */
-		private Coordenada notFittingC;
+		protected Coordenada notFittingC;
 		
 		/**
 		 * constructor of Tablero
 		 * initialises new dead celdas with hashmap
 		 * @param dimensiones
+		 * @throws ExcepcionCoordenadaIncorrecta 
 		 */
-		public Tablero(Coordenada dimensiones) {
-			this.dimensiones = new Coordenada (dimensiones);
+		protected Tablero(Coordenada dimensiones) throws ExcepcionCoordenadaIncorrecta {
+			this.dimensiones = dimensiones;
 			celdas = new HashMap<Coordenada, EstadoCelda>();
-			for (int i = 0; i < dimensiones.getX(); i++) {
-				for (int j = 0; j < dimensiones.getY(); j++) {
-					Coordenada coordenada;
-					try {
-						coordenada = new Coordenada(i,j);
-						celdas.put(coordenada, EstadoCelda.MUERTA);
-					} catch (ExcepcionCoordenadaIncorrecta e) {
-						throw new ExcepcionEjecucion(e);
+			if (dimensiones instanceof Coordenada1D) {
+				for (int i = 0; i < dimensiones.getX(); i++) {
+					Coordenada coordenada = new Coordenada1D(i);
+					celdas.put(coordenada, EstadoCelda.MUERTA);
+				}
+			} else {
+				for (int i = 0; i < dimensiones.getX(); i++) {
+					for (int j = 0; j < dimensiones.getY(); j++) {
+						Coordenada coordenada;
+						try {
+							coordenada = new Coordenada2D(i,j);
+							celdas.put(coordenada, EstadoCelda.MUERTA);
+						} catch (ExcepcionCoordenadaIncorrecta e) {
+							throw new ExcepcionEjecucion(e);
+						}
 					}
 				}
 			}
-			
 		}
 		
 		/**
@@ -58,8 +66,8 @@ public class Tablero {
 		 * @param posicion
 		 * @return ArrayList with neighbours
 		 */
-		public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) {
-			if(posicion != null) {
+		public abstract ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) throws ExcepcionArgumentosIncorrectos, ExcepcionPosicionFueraTablero, ExcepcionEjecucion;
+			/*if(posicion != null) {
 				try {
 		 			ArrayList<Coordenada> vecinas = new ArrayList<Coordenada>();
 					Collection<Coordenada> keys = this.getPosiciones();
@@ -121,50 +129,74 @@ public class Tablero {
 
 			} else {
 				throw new ExcepcionArgumentosIncorrectos("Coordenada posicion is null!");
-			}
-
-		}
-		
+			}*/
+		//getDimensiones, getPosiciones, cargaPatron, getCelda, setCelda, cargaPatron, contiene
 		/**
 		 * checks if the Patron fits into the Tablero and adds the patron into the tablero
 		 * @param patron
 		 * @param coordenadaInicial
 		 * @return if patron fits or not
 		 * @throws ExcepcionPosicionFueraTablero 
+		 * @throws ExcepcionCoordenadaIncorrecta 
 		 */
-		public void cargaPatron(Patron patron, Coordenada coordenadaInicial) throws ExcepcionPosicionFueraTablero {
+		public void cargaPatron(Patron patron, Coordenada coordenadaInicial) throws ExcepcionPosicionFueraTablero, ExcepcionEjecucion, ExcepcionCoordenadaIncorrecta {
 			if(patron != null && coordenadaInicial != null) {
-
 					Coordenada lastCoordenada = patron.getTablero().getDimensiones();
-					int xSumaCoordenada = coordenadaInicial.suma(lastCoordenada).getX();
-					int ySumaCoordenada = coordenadaInicial.suma(lastCoordenada).getY();
-					int xCoordenadaDim = this.getDimensiones().getX();		//wahrscheinlich dim des juegos benutzten!!!
-					int yCoordenadaDim = this.getDimensiones().getY();		//pat--tab xDimTab
-					if (coordenadaInicial.getX() < 0 || coordenadaInicial.getY() < 0) {
-						Coordenada cOut = coordenadaInicial;
-						throw new ExcepcionPosicionFueraTablero(this.getDimensiones(), coordenadaInicial);
-					}
-					else if(xSumaCoordenada  <= xCoordenadaDim && ySumaCoordenada <= yCoordenadaDim) {
-						int startX = coordenadaInicial.getX();
-						int startY = coordenadaInicial.getY();
-						int endX = patron.getTablero().getDimensiones().getX() + startX;
-						int endY = patron.getTablero().getDimensiones().getY() + startY;
-						for(int i = startX; i < endX; i++) {
-							for (int j = startY; j < endY; j++) {
-								//ExcepcionCoordenadaIncorrecta wird nur hier gecatched weil es sonst nirgends nötig ist
+					if (coordenadaInicial instanceof Coordenada1D) {
+						int xSumaCoordenada = coordenadaInicial.suma(lastCoordenada).getX();
+						int xCoordenadaDim = this.getDimensiones().getX();		//wahrscheinlich dim des juegos benutzten!!!
+						if (coordenadaInicial.getX() < 0) {
+							Coordenada cOut = coordenadaInicial;
+							throw new ExcepcionPosicionFueraTablero(this.getDimensiones(), coordenadaInicial);
+						}
+						else if(xSumaCoordenada  <= xCoordenadaDim) {
+							int startX = coordenadaInicial.getX();
+							int endX = patron.getTablero().getDimensiones().getX() + startX;
+							for (int i = startX; i < endX; i++) {
 								try {
-									this.setCelda(new Coordenada(i, j), patron.getCelda(new Coordenada(i-startX, j-startY)));
+									this.setCelda(new Coordenada1D(i), patron.getCelda(new Coordenada1D(i-startX)));
 								}  catch (ExcepcionCoordenadaIncorrecta e) {
 									throw new ExcepcionEjecucion(e);
 								}
 							}
+							
+						} else {
+							//wenn es übers eck geht..
+							//Coordenada cOut = new Coordenada(lastCoordenada.getX() - xCoordenadaDim, lastCoordenada.getY() - yCoordenadaDim);
+							notFittingC = coordenadaInicial;
+							throw new ExcepcionPosicionFueraTablero(this.getDimensiones(), coordenadaInicial);
 						}
-						
 					} else {
-						//wenn es übers eck geht..
-						//Coordenada cOut = new Coordenada(lastCoordenada.getX() - xCoordenadaDim, lastCoordenada.getY() - yCoordenadaDim);
-						notFittingC = coordenadaInicial;
-						throw new ExcepcionPosicionFueraTablero(this.getDimensiones(), coordenadaInicial);
+						int xSumaCoordenada = coordenadaInicial.suma(lastCoordenada).getX();
+						int ySumaCoordenada = coordenadaInicial.suma(lastCoordenada).getY();
+						int xCoordenadaDim = this.getDimensiones().getX();		//wahrscheinlich dim des juegos benutzten!!!
+						int yCoordenadaDim = this.getDimensiones().getY();		//pat--tab xDimTab
+						if (coordenadaInicial.getX() < 0 || coordenadaInicial.getY() < 0) {
+							Coordenada cOut = coordenadaInicial;
+							throw new ExcepcionPosicionFueraTablero(this.getDimensiones(), coordenadaInicial);
+						}
+						else if(xSumaCoordenada  <= xCoordenadaDim && ySumaCoordenada <= yCoordenadaDim) {
+							int startX = coordenadaInicial.getX();
+							int startY = coordenadaInicial.getY();
+							int endX = patron.getTablero().getDimensiones().getX() + startX;
+							int endY = patron.getTablero().getDimensiones().getY() + startY;
+							for(int i = startX; i < endX; i++) {
+								for (int j = startY; j < endY; j++) {
+									//ExcepcionCoordenadaIncorrecta wird nur hier gecatched weil es sonst nirgends nötig ist
+									try {
+										this.setCelda(new Coordenada2D(i, j), patron.getCelda(new Coordenada2D(i-startX, j-startY)));
+									}  catch (ExcepcionCoordenadaIncorrecta e) {
+										throw new ExcepcionEjecucion(e);
+									}
+								}
+							}
+							
+						} else {
+							//wenn es übers eck geht..
+							//Coordenada cOut = new Coordenada(lastCoordenada.getX() - xCoordenadaDim, lastCoordenada.getY() - yCoordenadaDim);
+							notFittingC = coordenadaInicial;
+							throw new ExcepcionPosicionFueraTablero(this.getDimensiones(), coordenadaInicial);
+						}
 					}
 					
 			} else {
@@ -173,48 +205,7 @@ public class Tablero {
 			
 		}
 		
-		/**
-		 * Overrides toString() method and gives back a string with a string representation of the tablero
-		 */
-		@Override
-		public String toString() {
-			try {
-				String result = "";
-				int sizeX = this.getDimensiones().getX();
-				int sizeY = this.getDimensiones().getY();
-				for(int j = 0; j <= sizeY+1; j++) {
-					for (int i = 0; i <= sizeX+1; i++) {
-						if (i==0 && j == 0 || i == sizeX+1 && j == 0 || i == 0 && j == sizeY+1 || i == sizeX+1 && j == sizeY+1) {
-							result += "+"; 
-							if (i == sizeX+1){
-							result += "\n";	
-							}
-						} else if (j == 0 || j == sizeY+1) {
-							result += "-";
-						}else if (i == 0 || i == sizeX+1) {
-							result += "|";
-							if (i == sizeX+1) {
-								result += "\n";
-							}
-						} else if (this.getCelda(new Coordenada(i-1,j-1)) == EstadoCelda.MUERTA) {
-							result += " ";
-						}else if (this.getCelda(new Coordenada(i-1,j-1)) == EstadoCelda.VIVA) {
-							result += "*";
-						}
-					}
-				}
-				return result;
-				
-				//ob das stimmt wird sich zeigen...??
-			} catch(ExcepcionCoordenadaIncorrecta e) {
-				throw new ExcepcionEjecucion(e);
-			} catch(ExcepcionArgumentosIncorrectos e) {
-				throw new ExcepcionEjecucion(e);
-			} catch(ExcepcionPosicionFueraTablero e) {
-				throw new ExcepcionEjecucion(e);
-			}
-			
-		}
+		
 		
 		/**
 		 * checks if the tablero contains a certain coordenada

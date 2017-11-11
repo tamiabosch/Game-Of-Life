@@ -55,9 +55,9 @@ public class Patron {
 						if (i == sizeX+1) {
 							result += "\n";
 						}
-					} else if (this.getCelda(new Coordenada(i-1,j-1)) == EstadoCelda.MUERTA) {
+					} else if (this.getCelda(new Coordenada2D(i-1,j-1)) == EstadoCelda.MUERTA) {
 						result += " ";
-					}else if (this.getCelda(new Coordenada(i-1,j-1)) == EstadoCelda.VIVA) {
+					}else if (this.getCelda(new Coordenada2D(i-1,j-1)) == EstadoCelda.VIVA) {
 						result += "*";
 					}
 				}

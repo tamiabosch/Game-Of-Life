@@ -22,7 +22,6 @@ public class Coordenada1D extends Coordenada{
     	} else {
     		throw new ExcepcionCoordenada1DIncorrecta(x);
     	}
-
     }
 
     /**
@@ -85,15 +84,23 @@ public class Coordenada1D extends Coordenada{
     public int getX() {
         return x;
     }
+    
+    /**
+     * getter for y coordinate
+     * @return int y
+     */
+    public int getY() {
+    	return -9999;
+    }
 
     /**
      * Summarises two coordinates
      * @param otra
      * @return
-     * @throws ExcepcionArgumentosIncorrectos
+     * @throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta
      */
     @Override
-    public Coordenada1D suma(Coordenada otra) throws ExcepcionArgumentosIncorrectos {
+    public Coordenada1D suma(Coordenada otra) throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta {
     	Coordenada1D castedOtra = (Coordenada1D) otra;
     	if (otra == null) {
     		throw new ExcepcionArgumentosIncorrectos("Wrong Argument: the suma method couldn't be excecuted because the Coordenada was null");

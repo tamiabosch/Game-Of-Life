@@ -10,7 +10,11 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
  * @author Tami
  *
  */
-public class ReglaConway {
+public class ReglaConway extends Regla{
+	
+	public ReglaConway() {
+		
+	}
 
 	/**
 	 * Calculates the state of the celdas depending on it's neighbours
@@ -20,7 +24,7 @@ public class ReglaConway {
 	 * @return the estado celda
 	 * @throws ExcepcionArgumentosIncorrectos 
 	 */
-	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) throws ExcepcionArgumentosIncorrectos {
+	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) throws ExcepcionArgumentosIncorrectos, ExcepcionPosicionFueraTablero {
 		if(tablero != null && posicion != null) {
 			try {
 				ArrayList<Coordenada> vecinas = tablero.getPosicionesVecinasCCW(posicion);

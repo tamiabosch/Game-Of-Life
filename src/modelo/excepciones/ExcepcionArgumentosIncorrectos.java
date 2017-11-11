@@ -14,6 +14,15 @@ public class ExcepcionArgumentosIncorrectos extends ExcepcionEjecucion {
 	 *
 	 * @param mensaje the mensaje
 	 */
+	public ExcepcionArgumentosIncorrectos() {
+		super("leerer Konstruktor");
+	}
+	
+	/**
+	 * Instantiates a new excepcion argumentos incorrectos.
+	 *
+	 * @param mensaje the mensaje
+	 */
 	public ExcepcionArgumentosIncorrectos(String mensaje) {
 		super(mensaje);
 	}

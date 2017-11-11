@@ -1,3 +1,6 @@
+/**
+ * package modelo
+ */
 package modelo;
 
 import java.util.ArrayList;
@@ -22,7 +25,7 @@ public class Juego {
 	/**
 	 * the rules for the Juego
 	 */
-	private ReglaConway regla;
+	private Regla regla;
 	/**
 	 * Arraylist with all patrones which are in the game
 	 */
@@ -34,7 +37,7 @@ public class Juego {
 	 * @param tablero
 	 * @param regla
 	 */
-	public Juego(Tablero tablero, ReglaConway regla) {
+	public Juego(Tablero tablero, Regla regla) {
 		if(tablero != null && regla != null) {
 			this.tablero = tablero;
 			this.regla = regla;
@@ -48,8 +51,10 @@ public class Juego {
 	 * @param p Patron
 	 * @param posicionInicial Coordenada
 	 * @throws ExcepcionPosicionFueraTablero 
+	 * @throws ExcepcionCoordenadaIncorrecta 
+	 * @throws ExcepcionArgumentosIncorrectos 
 	 */
-	public void cargaPatron(Patron p, Coordenada posicionInicial) throws ExcepcionPosicionFueraTablero {
+	public void cargaPatron(Patron p, Coordenada posicionInicial) throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta {
 		if(p != null && posicionInicial != null) {
 			//altes if statment tablero.cargaPatron(p, posicionInicial)
 			//Values to check of the patron fits into the tablero
@@ -78,11 +83,19 @@ public class Juego {
 	public void actualiza() throws ExcepcionCoordenadaIncorrecta {
 		try {
 			HashMap<Coordenada, EstadoCelda> evolution = new HashMap<Coordenada, EstadoCelda>();
-			for( int i = 0; i < tablero.getDimensiones().getX(); i++) {
-				for( int j = 0; j < tablero.getDimensiones().getY(); j++ ) {
-					Coordenada newCoordenada = new Coordenada (i,j);
+			if (tablero instanceof Tablero1D) {
+				for( int i = 0; i < tablero.getDimensiones().getX(); i++) {
+					Coordenada newCoordenada = new Coordenada1D(i);
 					EstadoCelda newEstado = regla.calculaSiguienteEstadoCelda(tablero, newCoordenada);
 					evolution.put(newCoordenada, newEstado);
+				}
+			} else {
+				for( int i = 0; i < tablero.getDimensiones().getX(); i++) {
+					for( int j = 0; j < tablero.getDimensiones().getY(); j++ ) {
+						Coordenada newCoordenada = new Coordenada2D(i,j);
+						EstadoCelda newEstado = regla.calculaSiguienteEstadoCelda(tablero, newCoordenada);
+						evolution.put(newCoordenada, newEstado);
+					}
 				}
 			}
 			Collection<Coordenada> collection = tablero.getPosiciones();
