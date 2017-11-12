@@ -206,7 +206,13 @@ public abstract class Tablero {
 		 */
 		public Coordenada getNotFittingC() {
 			return notFittingC;
-
+		}
+		
+		/**
+		 * Getter
+		 */
+		public HashMap<Coordenada, EstadoCelda> getCeldas() {
+			return celdas;
 		}
 		
 		/**

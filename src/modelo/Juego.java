@@ -58,13 +58,13 @@ public class Juego {
 		if(p != null && posicionInicial != null) {
 			//altes if statment tablero.cargaPatron(p, posicionInicial)
 			//Values to check of the patron fits into the tablero
-			Coordenada lastCoordenada = tablero.getDimensiones();
+			Coordenada lastCoordenada = p.getTablero().getDimensiones();
 			try {
 				int xSumaCoordenada = posicionInicial.suma(lastCoordenada).getX();
 				int ySumaCoordenada = posicionInicial.suma(lastCoordenada).getY();
 				int xCoordenadaDim = tablero.getDimensiones().getX();		//wahrscheinlich dim des juegos benutzten!!!
 				int yCoordenadaDim = tablero.getDimensiones().getY();
-				if(posicionInicial.getX() >= 0 || posicionInicial.getY() >= 0 || (xSumaCoordenada  <= xCoordenadaDim && ySumaCoordenada <= yCoordenadaDim)) {
+				if(posicionInicial.getX() >= 0 && posicionInicial.getY() >= 0 && (xSumaCoordenada  <= xCoordenadaDim && ySumaCoordenada <= yCoordenadaDim)) {
 					patronesUsados.add(p);
 					tablero.cargaPatron(p, posicionInicial);
 				} else {

@@ -37,41 +37,10 @@ public class Patron {
 	 */
 	@Override
 	public String toString() {
-		try {
-			String result = "";
-			int sizeX = tablero.getDimensiones().getX();
-			int sizeY = tablero.getDimensiones().getY();
-			for(int j = 0; j <= sizeY+1; j++) {
-				for (int i = 0; i <= sizeX+1; i++) {
-					if (i==0 && j == 0 || i == sizeX+1 && j == 0 || i == 0 && j == sizeY+1 || i == sizeX+1 && j == sizeY+1) {
-						result += "+"; 
-						if (i == sizeX+1){
-						result += "\n";	
-						}
-					} else if (j == 0 || j == sizeY+1) {
-						result += "-";
-					}else if (i == 0 || i == sizeX+1) {
-						result += "|";
-						if (i == sizeX+1) {
-							result += "\n";
-						}
-					} else if (this.getCelda(new Coordenada2D(i-1,j-1)) == EstadoCelda.MUERTA) {
-						result += " ";
-					}else if (this.getCelda(new Coordenada2D(i-1,j-1)) == EstadoCelda.VIVA) {
-						result += "*";
-					}
-				}
-			}
-			return nombre + "\n" + result;
-			
-		} catch(ExcepcionCoordenadaIncorrecta e) {
-			throw new ExcepcionEjecucion(e);
-		} catch(ExcepcionArgumentosIncorrectos e) {
-			throw new ExcepcionEjecucion(e);
-		} catch(ExcepcionPosicionFueraTablero e) {
-			throw new ExcepcionEjecucion(e);
-		}
-		
+		String toReturn = "";
+		toReturn += this.nombre + "\n";
+		toReturn += tablero.toString();
+		return toReturn;	
 	}
 
 	/**
