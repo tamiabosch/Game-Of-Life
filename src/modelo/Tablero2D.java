@@ -48,7 +48,6 @@ public class Tablero2D extends Tablero {
 	 * @throws ExcepcionArgumentosIncorrectos
 	 * @throws ExcepcionPosicionFueraTablero
 	 * @throws ExcepcionEjecucion
-	 * 
 	 */
 	@Override
 	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion)  throws ExcepcionArgumentosIncorrectos, ExcepcionPosicionFueraTablero, ExcepcionEjecucion {

@@ -66,7 +66,7 @@ public abstract class Tablero {
 			if(patron != null && coordenadaInicial != null) {
 				
 				try {
-					Coordenada lastPatronCoordenada = patron.getTablero().getDimensiones().suma(coordenadaInicial);
+//					Coordenada lastPatronCoordenada = patron.getTablero().getDimensiones().suma(coordenadaInicial);
 					Collection<Coordenada> keysPatron = patron.getPosiciones();
 					for(Coordenada key: keysPatron) {
 						this.setCelda(key.suma(coordenadaInicial), patron.getCelda(key));

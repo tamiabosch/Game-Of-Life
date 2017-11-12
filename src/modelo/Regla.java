@@ -7,8 +7,8 @@ import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
 /**
+ * abstract class Regla
  * @author Tami
- *
  */
 public abstract class Regla {
 	

@@ -111,7 +111,7 @@ public class Coordenada2D extends Coordenada {
      * Is summarising the x and y values of two Coordenada Objects
      * @param otra Coordenada
      * @return new Coordenada2D
-     * @throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta 
+     * @throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta
      */
     @Override
     public Coordenada2D suma(Coordenada otra) throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta {

@@ -36,5 +36,4 @@ public class ExcepcionArgumentosIncorrectos extends ExcepcionEjecucion {
 		super(causa);		
 	}
 	
-	//maybe noch ein leerer konstruktor wegen dem UML
 }

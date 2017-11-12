@@ -7,6 +7,7 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
 /**
  * The Class Regla30 which extends the abstract class Regla
+ * @author Tamia Bosch
  */
 public class Regla30 extends Regla {
 

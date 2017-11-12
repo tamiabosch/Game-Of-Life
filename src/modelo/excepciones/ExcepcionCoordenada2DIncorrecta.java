@@ -29,7 +29,6 @@ public class ExcepcionCoordenada2DIncorrecta extends ExcepcionCoordenadaIncorrec
 	/**
 	 * returns String ErrorMessage
 	 */
-	//TODO:gscheider text
 	public String getMessage() {
 		return"Error in ExcepcionCoodenada2DIncorrecta: x="+x+" y="+y;
 	}

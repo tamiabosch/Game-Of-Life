@@ -19,7 +19,6 @@ public class ExcepcionEjecucion extends RuntimeException {
 	
 	/**
 	 * Instantiates a new excepcion ejecucion.
-	 *
 	 * @param causa from Thorwable
 	 */
 	public ExcepcionEjecucion(Throwable causa) {
