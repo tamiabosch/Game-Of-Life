@@ -25,7 +25,7 @@ public class Tablero1D extends Tablero {
 
 	
 	/**
-	 * Construcotr for Tablero1D calls the constructor of Tablero
+	 * Constructor for Tablero1D calls the constructor of Tablero
 	 * @param ancho
 	 * @throws ExcepcionCoordenadaIncorrecta
 	 * @throws ExcepcionEjecucion
