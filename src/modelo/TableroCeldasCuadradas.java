@@ -26,23 +26,30 @@ public class TableroCeldasCuadradas extends Tablero2D {
 		super(ancho, alto);
 	}
 	
-	/* (non-Javadoc)
-	 * @see modelo.Tablero2D#getPosicionesVecinasCCW(modelo.Coordenada)
+	/**
+	 * getPosicionesVecinasCCW gives back all the neighbours
+	 * @param posicion
+	 * @return ArrayList with neighbours
+	 * @throws ExcepcionArgumentosIncorrectos
+	 * @throws ExcepcionPosicionFueraTablero
+	 * @throws ExcepcionEjecucion
 	 */
 	@Override
 	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion)  throws ExcepcionArgumentosIncorrectos, ExcepcionPosicionFueraTablero, ExcepcionEjecucion {
 		if(posicion != null) {
 			try {
+				//casting the posicion
+				Coordenada2D pos2D = (Coordenada2D) posicion;
 	 			ArrayList<Coordenada> vecinas = new ArrayList<Coordenada>();
 				Collection<Coordenada> keys = this.getPosiciones();
 				// Sind die Dimensionen der Tablero kleiner als die Koordinate? Dann null :)
-				if (posicion.getX() < 0 || posicion.getY() < 0 || dimensiones.getX() <= posicion.getX() || dimensiones.getY() <= posicion.getY()) {
+				if (pos2D.getX() < 0 || pos2D.getY() < 0 || dim2D.getX() <= pos2D.getX() || dim2D.getY() <= pos2D.getY()) {
 					return null;
 				}
 				
 				for (int i = -1; i < 2; i++ ) {
-					if(posicion.getX()-1 >=0 && posicion.getY()+i >= 0) {
-						Coordenada vecina = new Coordenada2D(posicion.getX()-1, posicion.getY()+i);
+					if(pos2D.getX()-1 >=0 && pos2D.getY()+i >= 0) {
+						Coordenada vecina = new Coordenada2D(pos2D.getX()-1, pos2D.getY()+i);
 						for (Coordenada coordenada : keys) {
 							if (vecina.equals(coordenada)) {
 								vecinas.add(vecina);
@@ -52,8 +59,8 @@ public class TableroCeldasCuadradas extends Tablero2D {
 					}
 				}
 				
-				if(posicion.getX() >= 0 && posicion.getY()+1 >= 0) {
-					Coordenada vecina01 = new Coordenada2D(posicion.getX(),posicion.getY()+1);
+				if(pos2D.getX() >= 0 && pos2D.getY()+1 >= 0) {
+					Coordenada vecina01 = new Coordenada2D(pos2D.getX(),pos2D.getY()+1);
 					for (Coordenada coordenada : keys) {
 						if (vecina01.equals(coordenada)) {
 							vecinas.add(vecina01);
@@ -65,8 +72,8 @@ public class TableroCeldasCuadradas extends Tablero2D {
 				
 				//rechte Seite
 				for (int i = 1; i > -2; i-- ) {
-					if(posicion.getX()+1 >= 0 && posicion.getY()+i >= 0) {
-						Coordenada vecina = new Coordenada2D(posicion.getX()+1, posicion.getY()+i);
+					if(pos2D.getX()+1 >= 0 && pos2D.getY()+i >= 0) {
+						Coordenada vecina = new Coordenada2D(pos2D.getX()+1, pos2D.getY()+i);
 						for (Coordenada coordenada : keys) {
 							if (vecina.equals(coordenada)) {
 								vecinas.add(vecina);
@@ -76,8 +83,8 @@ public class TableroCeldasCuadradas extends Tablero2D {
 					}
 				}
 				
-				if(posicion.getX() >= 0 && posicion.getY()+-1 >= 0) {
-					Coordenada vecina0_1 = new Coordenada2D(posicion.getX(),posicion.getY()+-1);
+				if(pos2D.getX() >= 0 && pos2D.getY()+-1 >= 0) {
+					Coordenada vecina0_1 = new Coordenada2D(pos2D.getX(),pos2D.getY()+-1);
 					for (Coordenada coordenada : keys) {
 						if (vecina0_1.equals(coordenada)) {
 							vecinas.add(vecina0_1);
@@ -99,14 +106,15 @@ public class TableroCeldasCuadradas extends Tablero2D {
 
 	/**
 	 * Overrides toString() method and gives back a string with a string representation of the tablero
+	 * @return String representation
 	 * @throws ExcepcionEjecucion the excepcion ejecucion
 	 */
 	@Override
 	public String toString() throws ExcepcionEjecucion{
 		try {
 			String result = "";
-			int sizeX = this.getDimensiones().getX();
-			int sizeY = this.getDimensiones().getY();
+			int sizeX = dim2D.getX();
+			int sizeY = dim2D.getY();
 			for(int j = 0; j <= sizeY+1; j++) {
 				for (int i = 0; i <= sizeX+1; i++) {
 					if (i==0 && j == 0 || i == sizeX+1 && j == 0 || i == 0 && j == sizeY+1 || i == sizeX+1 && j == sizeY+1) {

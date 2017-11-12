@@ -88,14 +88,6 @@ public class Coordenada1D extends Coordenada{
     public int getX() {
         return x;
     }
-    
-    /**
-     * getter for y coordinate
-     * @return int y
-     */
-    public int getY() {
-    	return -9999;
-    }
 
     /**
      * Summarises two coordinates

@@ -4,8 +4,6 @@
 package modelo;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
@@ -17,12 +15,11 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
  *Tablero 1D with onedimensional coordinates
  */
 public class Tablero1D extends Tablero {
-	
-	/**
-	 * HashMap with coordenadas as key an Estado Celdas as value
-	 */
-	//protected HashMap<Coordenada, EstadoCelda> celdas;
 
+	/**
+	 * casting the dimensiones into a Coordenada1D
+	 */
+	private Coordenada1D dim1D;
 	
 	/**
 	 * Constructor for Tablero1D calls the constructor of Tablero
@@ -32,7 +29,8 @@ public class Tablero1D extends Tablero {
 	 */
 	public Tablero1D(int ancho) throws ExcepcionCoordenadaIncorrecta, ExcepcionEjecucion {
 		super(new Coordenada1D(ancho));
-		for (int i = 0; i < dimensiones.getX(); i++) {
+		this.dim1D = (Coordenada1D) dimensiones;
+		for (int i = 0; i < dim1D.getX(); i++) {
 			Coordenada coordenada = new Coordenada1D(i);
 			celdas.put(coordenada, EstadoCelda.MUERTA);
 		}
@@ -43,24 +41,29 @@ public class Tablero1D extends Tablero {
 	 * getPosicionesVecinasCCW returns all neighbours in an Arraylist
 	 * @param posicion
 	 * @return ArrayList with neighbours
+	 * @throws ExcepcionArgumentosIncorrectos
+	 * @throws ExcepcionPosicionFueraTablero
+	 * @throws ExcepcionEjecucion
 	 */
 	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) throws ExcepcionArgumentosIncorrectos, ExcepcionPosicionFueraTablero, ExcepcionEjecucion {
 		if(posicion != null) {
 			try {
+				//casting the posicion
+				Coordenada1D pos1D = (Coordenada1D) posicion;
 	 			ArrayList<Coordenada> vecinas = new ArrayList<Coordenada>();
-				Collection<Coordenada> keys = this.getPosiciones();
+				//Collection<Coordenada> keys = this.getPosiciones();
 				// Sind die Dimensionen der Tablero kleiner als die Koordinate? Dann null :)
-				if (posicion.getX() < 0 || dimensiones.getX() <= posicion.getX()) {
+				if (pos1D.getX() < 0 || dim1D.getX() <= pos1D.getX()) {
 					return null;
 				}
 				
-				if (posicion.getX()-1 >= 0) {
-					Coordenada vecina = new Coordenada1D(posicion.getX()-1);
+				if (pos1D.getX()-1 >= 0) {
+					Coordenada vecina = new Coordenada1D(pos1D.getX()-1);
 					vecinas.add(vecina);
 				}
 				
-				if (posicion.getX()+1 < dimensiones.getX()) {
-					Coordenada vecina = new Coordenada1D(posicion.getX()+1);
+				if (pos1D.getX()+1 < dim1D.getX()) {
+					Coordenada vecina = new Coordenada1D(pos1D.getX()+1);
 					vecinas.add(vecina);
 				}
 				
@@ -83,7 +86,7 @@ public class Tablero1D extends Tablero {
 	public String toString() {
 		try {
 			String result = "";
-			int sizeX = this.getDimensiones().getX();
+			int sizeX = dim1D.getX();
 			for (int i = 0; i <= sizeX+1; i++) {
 				if (i == 0 || i == sizeX+1) {
 					result += "|";

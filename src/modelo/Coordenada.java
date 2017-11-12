@@ -26,19 +26,5 @@ public abstract class Coordenada {
 	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
 	 */
 	public abstract Coordenada suma(Coordenada otra) throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta;
-	
-	/**
-	 * Gets the x.
-	 *
-	 * @return the x
-	 */
-	public abstract int getX();
-	
-	/**
-	 * Gets the y.
-	 *
-	 * @return the y
-	 */
-	public abstract int getY();
 
 }

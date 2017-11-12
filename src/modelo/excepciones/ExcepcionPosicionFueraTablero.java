@@ -34,8 +34,8 @@ public class ExcepcionPosicionFueraTablero extends Exception {
 	 */
 	public String getMessage() {
 		return" ExcepcionPosicionFueraTablero: \n"
-				+ "The tablero has the size "+ dimensiones.getX() +"x" + dimensiones.getY()
-						+ " but the Coordenada is at (" + coordenada.getX() + ","+ coordenada.getY()  +")";
+				+ "The tablero has the size "+ dimensiones.toString()
+						+ " but the Coordenada is at " +coordenada.toString() ;
 	}
 
 	/**
