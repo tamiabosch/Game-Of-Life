@@ -4,6 +4,10 @@ import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenada1DIncorrecta;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 
+/**
+ * The Class Coordenada1D.
+ * @author Tamia Bosch
+ */
 public class Coordenada1D extends Coordenada{
     /**
      * private instancevariable x

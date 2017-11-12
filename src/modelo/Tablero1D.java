@@ -23,11 +23,23 @@ public class Tablero1D extends Tablero {
 	 */
 	//protected HashMap<Coordenada, EstadoCelda> celdas;
 
-	public Tablero1D(int ancho) throws ExcepcionCoordenadaIncorrecta {
+	
+	/**
+	 * Construcotr for Tablero1D calls the constructor of Tablero
+	 * @param ancho
+	 * @throws ExcepcionCoordenadaIncorrecta
+	 * @throws ExcepcionEjecucion
+	 */
+	public Tablero1D(int ancho) throws ExcepcionCoordenadaIncorrecta, ExcepcionEjecucion {
 		super(new Coordenada1D(ancho));
 	}
 
-	@Override
+
+	/**
+	 * getPosicionesVecinasCCW returns all neighbours in an Arraylist
+	 * @param posicion
+	 * @return ArrayList with neighbours
+	 */
 	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) throws ExcepcionArgumentosIncorrectos, ExcepcionPosicionFueraTablero, ExcepcionEjecucion {
 		if(posicion != null) {
 			try {
@@ -61,6 +73,7 @@ public class Tablero1D extends Tablero {
 	
 	/**
 	 * Overrides toString() method and gives back a string with a string representation of the tablero
+	 *@return String of Cellstructure
 	 */
 	@Override
 	public String toString() {

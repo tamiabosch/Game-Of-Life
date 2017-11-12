@@ -8,12 +8,27 @@ import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionEjecucion;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
+/**
+ * The Class TableroCeldasCuadradas.
+ * @author Tamia Bosch
+ */
 public class TableroCeldasCuadradas extends Tablero2D {
 	
-	public TableroCeldasCuadradas(int ancho, int alto) throws ExcepcionCoordenadaIncorrecta {
+	/**
+	 * Instantiates a new tablero celdas cuadradas.
+	 *
+	 * @param ancho the ancho
+	 * @param alto the alto
+	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
+	 * @throws ExcepcionEjecucion the excepcion ejecucion
+	 */
+	public TableroCeldasCuadradas(int ancho, int alto) throws ExcepcionCoordenadaIncorrecta, ExcepcionEjecucion {
 		super(ancho, alto);
 	}
 	
+	/* (non-Javadoc)
+	 * @see modelo.Tablero2D#getPosicionesVecinasCCW(modelo.Coordenada)
+	 */
 	@Override
 	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion)  throws ExcepcionArgumentosIncorrectos, ExcepcionPosicionFueraTablero, ExcepcionEjecucion {
 		if(posicion != null) {
@@ -81,11 +96,13 @@ public class TableroCeldasCuadradas extends Tablero2D {
 		}
 	}
 	
+
 	/**
 	 * Overrides toString() method and gives back a string with a string representation of the tablero
+	 * @throws ExcepcionEjecucion the excepcion ejecucion
 	 */
 	@Override
-	public String toString() {
+	public String toString() throws ExcepcionEjecucion{
 		try {
 			String result = "";
 			int sizeX = this.getDimensiones().getX();

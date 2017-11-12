@@ -14,7 +14,7 @@ public class ExcepcionEjecucion extends RuntimeException {
 	 * @param mensaje type String
 	 */
 	public ExcepcionEjecucion(String mensaje) {
-		System.out.println(mensaje + "was los string?");
+		System.out.println(mensaje + " was los string?");
 	}
 	
 	/**
@@ -23,7 +23,7 @@ public class ExcepcionEjecucion extends RuntimeException {
 	 * @param causa from Thorwable
 	 */
 	public ExcepcionEjecucion(Throwable causa) {
-		causa.printStackTrace();
-		System.out.println(causa + "was los causa?");
+		causa.getMessage();
+		System.out.println(causa + " was los causa?");
 	}
 }

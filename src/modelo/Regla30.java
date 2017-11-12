@@ -5,8 +5,14 @@ import java.util.ArrayList;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
+/**
+ * The Class Regla30 which extends the abstract class Regla
+ */
 public class Regla30 extends Regla {
 
+	/**
+	 * Instantiates a new regla 30
+	 */
 	public Regla30() {
 		
 	}

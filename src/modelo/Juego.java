@@ -37,7 +37,7 @@ public class Juego {
 	 * @param tablero
 	 * @param regla
 	 */
-	public Juego(Tablero tablero, Regla regla) {
+	public Juego(Tablero tablero, Regla regla) throws ExcepcionArgumentosIncorrectos{
 		if(tablero != null && regla != null) {
 			this.tablero = tablero;
 			this.regla = regla;
@@ -54,25 +54,28 @@ public class Juego {
 	 * @throws ExcepcionCoordenadaIncorrecta 
 	 * @throws ExcepcionArgumentosIncorrectos 
 	 */
-	public void cargaPatron(Patron p, Coordenada posicionInicial) throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta {
+	public void cargaPatron(Patron p, Coordenada posicionInicial) throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos, ExcepcionEjecucion {
 		if(p != null && posicionInicial != null) {
 			//altes if statment tablero.cargaPatron(p, posicionInicial)
 			//Values to check of the patron fits into the tablero
 			Coordenada lastCoordenada = tablero.getDimensiones();
-			int xSumaCoordenada = posicionInicial.suma(lastCoordenada).getX();
-			int ySumaCoordenada = posicionInicial.suma(lastCoordenada).getY();
-			int xCoordenadaDim = tablero.getDimensiones().getX();		//wahrscheinlich dim des juegos benutzten!!!
-			int yCoordenadaDim = tablero.getDimensiones().getY();
-			if(posicionInicial.getX() >= 0 || posicionInicial.getY() >= 0 || (xSumaCoordenada  <= xCoordenadaDim && ySumaCoordenada <= yCoordenadaDim)) {
-				patronesUsados.add(p);
-				tablero.cargaPatron(p, posicionInicial);
-			
-			} else {
-				throw new ExcepcionPosicionFueraTablero(tablero.getDimensiones(), posicionInicial);
-				//System.err.println("Error cargando plantilla " + p.getNombre() + " en (" + tablero.getNotFittingC().getX() + "," + tablero.getNotFittingC().getY() + ")");
+			try {
+				int xSumaCoordenada = posicionInicial.suma(lastCoordenada).getX();
+				int ySumaCoordenada = posicionInicial.suma(lastCoordenada).getY();
+				int xCoordenadaDim = tablero.getDimensiones().getX();		//wahrscheinlich dim des juegos benutzten!!!
+				int yCoordenadaDim = tablero.getDimensiones().getY();
+				if(posicionInicial.getX() >= 0 || posicionInicial.getY() >= 0 || (xSumaCoordenada  <= xCoordenadaDim && ySumaCoordenada <= yCoordenadaDim)) {
+					patronesUsados.add(p);
+					tablero.cargaPatron(p, posicionInicial);
+				} else {
+					throw new ExcepcionPosicionFueraTablero(tablero.getDimensiones(), posicionInicial);
 			}
-		} else {
-			throw new ExcepcionArgumentosIncorrectos("Patron or CoordenadaInicial is null in Juego!");
+				
+			} catch (ExcepcionCoordenadaIncorrecta e) {
+				throw new ExcepcionEjecucion(e);
+			} 
+		}  else {
+			throw new ExcepcionArgumentosIncorrectos("Patron or CoordenadaInicial is null in Juego!");	
 		}
 	}
 	
@@ -80,7 +83,7 @@ public class Juego {
 	 * calcuates the new state of the juego and all it's celdas
 	 * @throws ExcepcionCoordenadaIncorrecta 
 	 */
-	public void actualiza() throws ExcepcionCoordenadaIncorrecta {
+	public void actualiza() throws ExcepcionEjecucion {
 		try {
 			HashMap<Coordenada, EstadoCelda> evolution = new HashMap<Coordenada, EstadoCelda>();
 			if (tablero instanceof Tablero1D) {
@@ -103,6 +106,8 @@ public class Juego {
 				tablero.setCelda((Coordenada) collection.toArray()[i], evolution.get(collection.toArray()[i]));
 			}
 		} catch (ExcepcionPosicionFueraTablero e) {
+			throw new ExcepcionEjecucion(e);
+		} catch (ExcepcionCoordenadaIncorrecta e) {
 			throw new ExcepcionEjecucion(e);
 		}
 
