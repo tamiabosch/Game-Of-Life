@@ -13,8 +13,8 @@ import modelo.excepciones.ExcepcionEjecucion;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
 /**
- * @author Tami
- *
+ * @author Tamia Bosch
+ *Tablero 1D with onedimensional coordinates
  */
 public class Tablero1D extends Tablero {
 	
