@@ -56,24 +56,8 @@ public class Juego {
 	 */
 	public void cargaPatron(Patron p, Coordenada posicionInicial) throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos, ExcepcionEjecucion {
 		if(p != null && posicionInicial != null) {
-			//altes if statment tablero.cargaPatron(p, posicionInicial)
-			//Values to check of the patron fits into the tablero
-			Coordenada lastCoordenada = p.getTablero().getDimensiones();
-			try {
-				int xSumaCoordenada = posicionInicial.suma(lastCoordenada).getX();
-				int ySumaCoordenada = posicionInicial.suma(lastCoordenada).getY();
-				int xCoordenadaDim = tablero.getDimensiones().getX();		//wahrscheinlich dim des juegos benutzten!!!
-				int yCoordenadaDim = tablero.getDimensiones().getY();
-				if(posicionInicial.getX() >= 0 && posicionInicial.getY() >= 0 && (xSumaCoordenada  <= xCoordenadaDim && ySumaCoordenada <= yCoordenadaDim)) {
-					patronesUsados.add(p);
-					tablero.cargaPatron(p, posicionInicial);
-				} else {
-					throw new ExcepcionPosicionFueraTablero(tablero.getDimensiones(), posicionInicial);
-			}
-				
-			} catch (ExcepcionCoordenadaIncorrecta e) {
-				throw new ExcepcionEjecucion(e);
-			} 
+			tablero.cargaPatron(p, posicionInicial);
+			patronesUsados.add(p);
 		}  else {
 			throw new ExcepcionArgumentosIncorrectos("Patron or CoordenadaInicial is null in Juego!");	
 		}
