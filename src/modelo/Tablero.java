@@ -65,75 +65,16 @@ public abstract class Tablero {
 		public void cargaPatron(Patron patron, Coordenada coordenadaInicial) throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos, ExcepcionEjecucion {
 			if(patron != null && coordenadaInicial != null) {
 				
-				/*try {
+				try {
 					Coordenada lastPatronCoordenada = patron.getTablero().getDimensiones().suma(coordenadaInicial);
-					celdas.get(lastPatronCoordenada);
-				} catch (ExcepcionCoordenadaIncorrecta e) {
-					
-				}*/
-				
-					Coordenada lastCoordenada = patron.getTablero().getDimensiones();
-					if (coordenadaInicial instanceof Coordenada1D) {
-						int xSumaCoordenada;
-						try {
-							xSumaCoordenada = coordenadaInicial.suma(lastCoordenada).getX();
-						} catch (ExcepcionCoordenadaIncorrecta e1) {
-							throw new ExcepcionEjecucion(e1);
-						}
-						int xCoordenadaDim = this.getDimensiones().getX();		//wahrscheinlich dim des juegos benutzten!!!
-						if (coordenadaInicial.getX() < 0) {
-							Coordenada cOut = coordenadaInicial;
-							throw new ExcepcionPosicionFueraTablero(this.getDimensiones(), coordenadaInicial);
-						}
-						else if(xSumaCoordenada  <= xCoordenadaDim) {
-							int startX = coordenadaInicial.getX();
-							int endX = patron.getTablero().getDimensiones().getX() + startX;
-							for (int i = startX; i < endX; i++) {
-								try {
-									this.setCelda(new Coordenada1D(i), patron.getCelda(new Coordenada1D(i-startX)));
-								}  catch (ExcepcionCoordenadaIncorrecta e) {
-									throw new ExcepcionEjecucion(e);
-								}
-							}
-							
-						} else {
-							//wenn es übers eck geht..
-							//Coordenada cOut = new Coordenada(lastCoordenada.getX() - xCoordenadaDim, lastCoordenada.getY() - yCoordenadaDim);
-							notFittingC = coordenadaInicial;
-							throw new ExcepcionPosicionFueraTablero(this.getDimensiones(), coordenadaInicial);
-						}
-					} else {
-						try {
-							int xSumaCoordenada = coordenadaInicial.suma(lastCoordenada).getX();
-							int ySumaCoordenada = coordenadaInicial.suma(lastCoordenada).getY();
-							int xCoordenadaDim = this.getDimensiones().getX();		//wahrscheinlich dim des juegos benutzten!!!
-							int yCoordenadaDim = this.getDimensiones().getY();		//pat--tab xDimTab
-							if (coordenadaInicial.getX() < 0 || coordenadaInicial.getY() < 0) {
-								Coordenada cOut = coordenadaInicial;
-								throw new ExcepcionPosicionFueraTablero(this.getDimensiones(), coordenadaInicial);
-							}
-							else if(xSumaCoordenada  <= xCoordenadaDim && ySumaCoordenada <= yCoordenadaDim) {
-								int startX = coordenadaInicial.getX();
-								int startY = coordenadaInicial.getY();
-								int endX = patron.getTablero().getDimensiones().getX() + startX;
-								int endY = patron.getTablero().getDimensiones().getY() + startY;
-								for(int i = startX; i < endX; i++) {
-									for (int j = startY; j < endY; j++) {
-										//ExcepcionCoordenadaIncorrecta wird nur hier gecatched weil es sonst nirgends nötig ist
-										this.setCelda(new Coordenada2D(i, j), patron.getCelda(new Coordenada2D(i-startX, j-startY)));
-									}
-								}
-								
-							} else {
-								//wenn es übers eck geht..
-								//Coordenada cOut = new Coordenada(lastCoordenada.getX() - xCoordenadaDim, lastCoordenada.getY() - yCoordenadaDim);
-								notFittingC = coordenadaInicial;
-								throw new ExcepcionPosicionFueraTablero(this.getDimensiones(), coordenadaInicial);
-							}
-						} catch (ExcepcionCoordenadaIncorrecta e) {
-							throw new ExcepcionEjecucion(e);
-						}
+					Collection<Coordenada> keysPatron = patron.getPosiciones();
+					for(Coordenada key: keysPatron) {
+						this.setCelda(key.suma(coordenadaInicial), patron.getCelda(key));
 					}
+					
+				} catch (ExcepcionCoordenadaIncorrecta e) {
+					throw new ExcepcionEjecucion(e);
+				}
 					
 			} else {
 				throw new ExcepcionArgumentosIncorrectos("Coordenada or Patron is null!");
