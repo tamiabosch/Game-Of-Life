@@ -22,9 +22,8 @@ public class ReglaConway extends Regla{
 	 * @param tablero the tablero
 	 * @param posicion the posicion
 	 * @return the estado celda
-	 * @throws ExcepcionArgumentosIncorrectos 
 	 */
-	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) throws ExcepcionArgumentosIncorrectos, ExcepcionPosicionFueraTablero {
+	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) throws ExcepcionPosicionFueraTablero {
 		if(tablero != null && posicion != null) {
 			try {
 				ArrayList<Coordenada> vecinas = tablero.getPosicionesVecinasCCW(posicion);

@@ -25,9 +25,8 @@ public class Tablero1D extends Tablero {
 	 * Constructor for Tablero1D calls the constructor of Tablero
 	 * @param ancho
 	 * @throws ExcepcionCoordenadaIncorrecta
-	 * @throws ExcepcionEjecucion
 	 */
-	public Tablero1D(int ancho) throws ExcepcionCoordenadaIncorrecta, ExcepcionEjecucion {
+	public Tablero1D(int ancho) throws ExcepcionCoordenadaIncorrecta {
 		super(new Coordenada1D(ancho));
 		this.dim1D = (Coordenada1D) dimensiones;
 		for (int i = 0; i < dim1D.getX(); i++) {
@@ -41,11 +40,9 @@ public class Tablero1D extends Tablero {
 	 * getPosicionesVecinasCCW returns all neighbours in an Arraylist
 	 * @param posicion
 	 * @return ArrayList with neighbours
-	 * @throws ExcepcionArgumentosIncorrectos
 	 * @throws ExcepcionPosicionFueraTablero
-	 * @throws ExcepcionEjecucion
 	 */
-	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) throws ExcepcionArgumentosIncorrectos, ExcepcionPosicionFueraTablero, ExcepcionEjecucion {
+	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) throws ExcepcionPosicionFueraTablero {
 		if(posicion != null) {
 			try {
 				//casting the posicion

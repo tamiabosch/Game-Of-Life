@@ -20,9 +20,8 @@ public class TableroCeldasCuadradas extends Tablero2D {
 	 * @param ancho the ancho
 	 * @param alto the alto
 	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
-	 * @throws ExcepcionEjecucion the excepcion ejecucion
 	 */
-	public TableroCeldasCuadradas(int ancho, int alto) throws ExcepcionCoordenadaIncorrecta, ExcepcionEjecucion {
+	public TableroCeldasCuadradas(int ancho, int alto) throws ExcepcionCoordenadaIncorrecta {
 		super(ancho, alto);
 	}
 	
@@ -30,12 +29,10 @@ public class TableroCeldasCuadradas extends Tablero2D {
 	 * getPosicionesVecinasCCW gives back all the neighbours
 	 * @param posicion
 	 * @return ArrayList with neighbours
-	 * @throws ExcepcionArgumentosIncorrectos
 	 * @throws ExcepcionPosicionFueraTablero
-	 * @throws ExcepcionEjecucion
 	 */
 	@Override
-	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion)  throws ExcepcionArgumentosIncorrectos, ExcepcionPosicionFueraTablero, ExcepcionEjecucion {
+	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion)  throws  ExcepcionPosicionFueraTablero {
 		if(posicion != null) {
 			try {
 				//casting the posicion
@@ -107,10 +104,9 @@ public class TableroCeldasCuadradas extends Tablero2D {
 	/**
 	 * Overrides toString() method and gives back a string with a string representation of the tablero
 	 * @return String representation
-	 * @throws ExcepcionEjecucion the excepcion ejecucion
 	 */
 	@Override
-	public String toString() throws ExcepcionEjecucion{
+	public String toString() {
 		try {
 			String result = "";
 			int sizeX = dim2D.getX();

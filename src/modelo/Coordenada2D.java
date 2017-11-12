@@ -40,9 +40,8 @@ public class Coordenada2D extends Coordenada {
     /**
      * Constructor for Coordenada copying an other coordenate
      * @param otra Coordenada
-     * @throws ExcepcionCoordenadaIncorrecta 
      */
-    public Coordenada2D(Coordenada2D otra) throws ExcepcionArgumentosIncorrectos  {
+    public Coordenada2D(Coordenada2D otra) {
     	if(otra!=null) {
             this.x = otra.getX();
             this.y = otra.getY();
@@ -111,10 +110,10 @@ public class Coordenada2D extends Coordenada {
      * Is summarising the x and y values of two Coordenada Objects
      * @param otra Coordenada
      * @return new Coordenada2D
-     * @throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta
+     * @throws ExcepcionCoordenadaIncorrecta
      */
     @Override
-    public Coordenada2D suma(Coordenada otra) throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta {
+    public Coordenada2D suma(Coordenada otra) throws ExcepcionCoordenadaIncorrecta {
     	Coordenada2D castedOtra = (Coordenada2D) otra;
     	if (otra == null) {
     		throw new ExcepcionArgumentosIncorrectos("Wrong Argument: the suma method couldn't be excecuted because the Coordenada was null");

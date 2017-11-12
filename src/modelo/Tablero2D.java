@@ -24,9 +24,8 @@ public class Tablero2D extends Tablero {
 	 * @param ancho the ancho
 	 * @param alto the alto
 	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
-	 * @throws ExcepcionEjecucion the excepcion ejecucion
 	 */
-	public Tablero2D(int ancho, int alto) throws ExcepcionCoordenadaIncorrecta, ExcepcionEjecucion {
+	public Tablero2D(int ancho, int alto) throws ExcepcionCoordenadaIncorrecta {
 		super(new Coordenada2D(ancho, alto));
 		this.dim2D  = (Coordenada2D) dimensiones;
 		for (int i = 0; i < dim2D.getX(); i++) {
@@ -45,12 +44,10 @@ public class Tablero2D extends Tablero {
 	/**
 	 * empty method for getting posicion vecinas
 	 * @return ArrayList<Coordenada>
-	 * @throws ExcepcionArgumentosIncorrectos
 	 * @throws ExcepcionPosicionFueraTablero
-	 * @throws ExcepcionEjecucion
 	 */
 	@Override
-	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion)  throws ExcepcionArgumentosIncorrectos, ExcepcionPosicionFueraTablero, ExcepcionEjecucion {
+	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion)  throws ExcepcionPosicionFueraTablero {
 		return null;
 	}
 }

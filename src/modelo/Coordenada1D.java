@@ -18,7 +18,7 @@ public class Coordenada1D extends Coordenada{
      * Constructor for Coordenada using an x and y coordinate
      * @param x int coordinate
      * @param y int coordinate
-     * @throws ExcepcionCoordenada1DIncorrecta 
+     * @throws ExcepcionCoordenadaIncorrecta 
      */
     public Coordenada1D(int x) throws ExcepcionCoordenadaIncorrecta {
     	if(x >= 0) {
@@ -31,9 +31,8 @@ public class Coordenada1D extends Coordenada{
     /**
      * Constructor for Coordenada copying an other coordenate
      * @param otra Coordenada
-     * @throws ExcepcionCoordenadaIncorrecta 
      */
-    public Coordenada1D(Coordenada1D otra) throws ExcepcionArgumentosIncorrectos  {
+    public Coordenada1D(Coordenada1D otra) {
     	if(otra!=null) {
             this.x = otra.getX();
     	} else {
@@ -93,10 +92,10 @@ public class Coordenada1D extends Coordenada{
      * Summarises two coordinates
      * @param otra
      * @return
-     * @throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta
+     * @throws ExcepcionCoordenadaIncorrecta
      */
     @Override
-    public Coordenada1D suma(Coordenada otra) throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta {
+    public Coordenada1D suma(Coordenada otra) throws ExcepcionCoordenadaIncorrecta {
     	Coordenada1D castedOtra = (Coordenada1D) otra;
     	if (otra == null) {
     		throw new ExcepcionArgumentosIncorrectos("Wrong Argument: the suma method couldn't be excecuted because the Coordenada was null");

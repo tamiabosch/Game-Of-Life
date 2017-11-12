@@ -3,7 +3,6 @@
  */
 package modelo;
 
-import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
 /**
@@ -25,8 +24,7 @@ public abstract class Regla {
 	 * @param tablero the tablero
 	 * @param posicion the posicion
 	 * @return the estado celda
-	 * @throws ExcepcionArgumentosIncorrectos the excepcion argumentos incorrectos
 	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 */
-	public abstract EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) throws ExcepcionArgumentosIncorrectos, ExcepcionPosicionFueraTablero;
+	public abstract EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) throws ExcepcionPosicionFueraTablero;
 }

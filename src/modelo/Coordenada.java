@@ -3,7 +3,6 @@
  */
 package modelo;
 
-import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 
 /**
@@ -22,9 +21,8 @@ public abstract class Coordenada {
 	 *
 	 * @param otra the otra
 	 * @return the coordenada
-	 * @throws ExcepcionArgumentosIncorrectos the excepcion argumentos incorrectos
 	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
 	 */
-	public abstract Coordenada suma(Coordenada otra) throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta;
+	public abstract Coordenada suma(Coordenada otra) throws ExcepcionCoordenadaIncorrecta;
 
 }

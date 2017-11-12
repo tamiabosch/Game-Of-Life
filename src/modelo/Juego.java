@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
-import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionEjecucion;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
@@ -37,7 +36,7 @@ public class Juego {
 	 * @param tablero
 	 * @param regla
 	 */
-	public Juego(Tablero tablero, Regla regla) throws ExcepcionArgumentosIncorrectos{
+	public Juego(Tablero tablero, Regla regla) {
 		if(tablero != null && regla != null) {
 			this.tablero = tablero;
 			this.regla = regla;
@@ -51,10 +50,8 @@ public class Juego {
 	 * @param p Patron
 	 * @param posicionInicial Coordenada
 	 * @throws ExcepcionPosicionFueraTablero 
-	 * @throws ExcepcionCoordenadaIncorrecta 
-	 * @throws ExcepcionArgumentosIncorrectos 
 	 */
-	public void cargaPatron(Patron p, Coordenada posicionInicial) throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos, ExcepcionEjecucion {
+	public void cargaPatron(Patron p, Coordenada posicionInicial) throws ExcepcionPosicionFueraTablero {
 		if(p != null && posicionInicial != null) {
 			tablero.cargaPatron(p, posicionInicial);
 			patronesUsados.add(p);
@@ -65,9 +62,8 @@ public class Juego {
 	
 	/**
 	 * calcuates the new state of the juego and all it's celdas
-	 * @throws ExcepcionCoordenadaIncorrecta 
 	 */
-	public void actualiza() throws ExcepcionEjecucion {
+	public void actualiza() {
 		try {
 			HashMap<Coordenada, EstadoCelda> celdas = tablero.getCeldas();
 			HashMap<Coordenada, EstadoCelda> evolution = new HashMap<Coordenada, EstadoCelda>();

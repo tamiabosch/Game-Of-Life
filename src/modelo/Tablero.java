@@ -6,9 +6,6 @@ package modelo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
@@ -39,9 +36,8 @@ public abstract class Tablero {
 		 * constructor of Tablero
 		 * initialises new dead celdas with hashmap
 		 * @param dimensiones
-		 * @throws ExcepcionCoordenadaIncorrecta 
 		 */
-		protected Tablero(Coordenada dimensiones) throws ExcepcionCoordenadaIncorrecta, ExcepcionEjecucion {
+		protected Tablero(Coordenada dimensiones) {
 			this.dimensiones = dimensiones;
 			celdas = new HashMap<Coordenada, EstadoCelda>();
 		}
@@ -52,7 +48,7 @@ public abstract class Tablero {
 		 * @param posicion
 		 * @return ArrayList with neighbours
 		 */
-		public abstract ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) throws ExcepcionArgumentosIncorrectos, ExcepcionPosicionFueraTablero, ExcepcionEjecucion;
+		public abstract ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) throws ExcepcionPosicionFueraTablero;
 
 		/**
 		 * checks if the Patron fits into the Tablero and adds the patron into the tablero
@@ -60,9 +56,8 @@ public abstract class Tablero {
 		 * @param coordenadaInicial
 		 * @return if patron fits or not
 		 * @throws ExcepcionPosicionFueraTablero 
-		 * @throws ExcepcionCoordenadaIncorrecta 
 		 */
-		public void cargaPatron(Patron patron, Coordenada coordenadaInicial) throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos, ExcepcionEjecucion {
+		public void cargaPatron(Patron patron, Coordenada coordenadaInicial) throws ExcepcionPosicionFueraTablero {
 			if(patron != null && coordenadaInicial != null) {
 				
 				try {
@@ -89,7 +84,7 @@ public abstract class Tablero {
 		 * @param posicion
 		 * @return boolean 
 		 */
-		public boolean contiene(Coordenada posicion) throws ExcepcionArgumentosIncorrectos{
+		public boolean contiene(Coordenada posicion) {
 			if(posicion != null) {
 				if (celdas.get(posicion) != null) {
 					return true;
@@ -115,7 +110,7 @@ public abstract class Tablero {
 		 * @return EstadoCelda
 		 * @throws ExcepcionPosicionFueraTablero 
 		 */
-		public EstadoCelda getCelda(Coordenada posicion) throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos {
+		public EstadoCelda getCelda(Coordenada posicion) throws ExcepcionPosicionFueraTablero {
 			if(posicion != null) {
 				if(celdas.get(posicion)==null) {
 					throw new ExcepcionPosicionFueraTablero(this.getDimensiones(), posicion);
@@ -153,9 +148,9 @@ public abstract class Tablero {
 		 * Sets posicion and status of a specific celda 
 		 * @param posicion
 		 * @param e
-		 * @throws ExcepcionArgumentosIncorrectos, ExcepcionPosicionFueraTablero 
+		 * @throws ExcepcionPosicionFueraTablero 
 		 */
-		public void setCelda(Coordenada posicion, EstadoCelda e) throws ExcepcionArgumentosIncorrectos, ExcepcionPosicionFueraTablero {
+		public void setCelda(Coordenada posicion, EstadoCelda e) throws ExcepcionPosicionFueraTablero {
 			if(posicion != null) {
 				if (celdas.get(posicion)==null) {
 					throw new ExcepcionPosicionFueraTablero(this.getDimensiones(), posicion);
