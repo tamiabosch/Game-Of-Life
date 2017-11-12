@@ -3,8 +3,6 @@ package modelo;
 import java.util.Collection;
 
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
-import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
-import modelo.excepciones.ExcepcionEjecucion;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
 /**
@@ -83,6 +81,5 @@ public class Patron {
 	public Collection<Coordenada> getPosiciones() {
 		return this.tablero.getPosiciones();
 	}
-	
 	
 }

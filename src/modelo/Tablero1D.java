@@ -32,6 +32,10 @@ public class Tablero1D extends Tablero {
 	 */
 	public Tablero1D(int ancho) throws ExcepcionCoordenadaIncorrecta, ExcepcionEjecucion {
 		super(new Coordenada1D(ancho));
+		for (int i = 0; i < dimensiones.getX(); i++) {
+			Coordenada coordenada = new Coordenada1D(i);
+			celdas.put(coordenada, EstadoCelda.MUERTA);
+		}
 	}
 
 

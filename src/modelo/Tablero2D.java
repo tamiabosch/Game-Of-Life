@@ -20,8 +20,17 @@ public class Tablero2D extends Tablero {
 	
 	public Tablero2D(int ancho, int alto) throws ExcepcionCoordenadaIncorrecta, ExcepcionEjecucion {
 		super(new Coordenada2D(ancho, alto));
-		//celdas = new HashMap<Coordenada, EstadoCelda>();
-		
+		for (int i = 0; i < dimensiones.getX(); i++) {
+			for (int j = 0; j < dimensiones.getY(); j++) {
+				Coordenada coordenada;
+				try {
+					coordenada = new Coordenada2D(i,j);
+					celdas.put(coordenada, EstadoCelda.MUERTA);
+				} catch (ExcepcionCoordenadaIncorrecta e) {
+					throw new ExcepcionEjecucion(e);
+				}
+			}
+		}
 	}
 	
 	/**

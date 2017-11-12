@@ -6,6 +6,7 @@ package modelo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
 
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
@@ -30,7 +31,6 @@ public class Juego {
 	 * Arraylist with all patrones which are in the game
 	 */
 	private ArrayList<Patron> patronesUsados = new ArrayList<Patron>();
-	
 	
 	/**
 	 * Constructor for Juego with a tablero and regla
@@ -69,21 +69,12 @@ public class Juego {
 	 */
 	public void actualiza() throws ExcepcionEjecucion {
 		try {
+			HashMap<Coordenada, EstadoCelda> celdas = tablero.getCeldas();
 			HashMap<Coordenada, EstadoCelda> evolution = new HashMap<Coordenada, EstadoCelda>();
-			if (tablero instanceof Tablero1D) {
-				for( int i = 0; i < tablero.getDimensiones().getX(); i++) {
-					Coordenada newCoordenada = new Coordenada1D(i);
-					EstadoCelda newEstado = regla.calculaSiguienteEstadoCelda(tablero, newCoordenada);
-					evolution.put(newCoordenada, newEstado);
-				}
-			} else {
-				for( int i = 0; i < tablero.getDimensiones().getX(); i++) {
-					for( int j = 0; j < tablero.getDimensiones().getY(); j++ ) {
-						Coordenada newCoordenada = new Coordenada2D(i,j);
-						EstadoCelda newEstado = regla.calculaSiguienteEstadoCelda(tablero, newCoordenada);
-						evolution.put(newCoordenada, newEstado);
-					}
-				}
+			for (Map.Entry<Coordenada, EstadoCelda> entry : celdas.entrySet()) {
+			    Coordenada coordenada = entry.getKey();
+			    EstadoCelda newEstado = regla.calculaSiguienteEstadoCelda(tablero, coordenada);
+			    evolution.put(coordenada, newEstado);
 			}
 			Collection<Coordenada> collection = tablero.getPosiciones();
 			for(int i=0; i < collection.size(); i++) {
@@ -91,11 +82,7 @@ public class Juego {
 			}
 		} catch (ExcepcionPosicionFueraTablero e) {
 			throw new ExcepcionEjecucion(e);
-		} catch (ExcepcionCoordenadaIncorrecta e) {
-			throw new ExcepcionEjecucion(e);
-		}
-
-		
+		} 
 	}
 
 	/**

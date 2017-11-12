@@ -6,6 +6,9 @@ package modelo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
@@ -41,24 +44,6 @@ public abstract class Tablero {
 		protected Tablero(Coordenada dimensiones) throws ExcepcionCoordenadaIncorrecta, ExcepcionEjecucion {
 			this.dimensiones = dimensiones;
 			celdas = new HashMap<Coordenada, EstadoCelda>();
-			if (dimensiones instanceof Coordenada1D) {
-				for (int i = 0; i < dimensiones.getX(); i++) {
-					Coordenada coordenada = new Coordenada1D(i);
-					celdas.put(coordenada, EstadoCelda.MUERTA);
-				}
-			} else {
-				for (int i = 0; i < dimensiones.getX(); i++) {
-					for (int j = 0; j < dimensiones.getY(); j++) {
-						Coordenada coordenada;
-						try {
-							coordenada = new Coordenada2D(i,j);
-							celdas.put(coordenada, EstadoCelda.MUERTA);
-						} catch (ExcepcionCoordenadaIncorrecta e) {
-							throw new ExcepcionEjecucion(e);
-						}
-					}
-				}
-			}
 		}
 		
 		/**
@@ -79,6 +64,14 @@ public abstract class Tablero {
 		 */
 		public void cargaPatron(Patron patron, Coordenada coordenadaInicial) throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos, ExcepcionEjecucion {
 			if(patron != null && coordenadaInicial != null) {
+				
+				/*try {
+					Coordenada lastPatronCoordenada = patron.getTablero().getDimensiones().suma(coordenadaInicial);
+					celdas.get(lastPatronCoordenada);
+				} catch (ExcepcionCoordenadaIncorrecta e) {
+					
+				}*/
+				
 					Coordenada lastCoordenada = patron.getTablero().getDimensiones();
 					if (coordenadaInicial instanceof Coordenada1D) {
 						int xSumaCoordenada;
