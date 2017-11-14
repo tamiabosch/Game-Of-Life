@@ -31,6 +31,7 @@ public class ExcepcionPosicionFueraTablero extends Exception {
 
 	/**
 	 * prints out Error Message
+	 * @return String
 	 */
 	public String getMessage() {
 		return" ExcepcionPosicionFueraTablero: \n"

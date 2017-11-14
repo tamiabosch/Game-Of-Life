@@ -23,6 +23,7 @@ public class Regla30 extends Regla {
 	 *
 	 * @param tablero the tablero
 	 * @param posicion the posicion
+	 * @throws ExcepcionPosicionFueraTablero
 	 * @return the estado celda
 	 */
 	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) throws ExcepcionPosicionFueraTablero {

@@ -23,7 +23,7 @@ public class Tablero1D extends Tablero {
 	
 	/**
 	 * Constructor for Tablero1D calls the constructor of Tablero
-	 * @param ancho
+	 * @param ancho int
 	 * @throws ExcepcionCoordenadaIncorrecta
 	 */
 	public Tablero1D(int ancho) throws ExcepcionCoordenadaIncorrecta {
@@ -38,7 +38,7 @@ public class Tablero1D extends Tablero {
 
 	/**
 	 * getPosicionesVecinasCCW returns all neighbours in an Arraylist
-	 * @param posicion
+	 * @param posicion Coordenada
 	 * @return ArrayList with neighbours
 	 * @throws ExcepcionPosicionFueraTablero
 	 */

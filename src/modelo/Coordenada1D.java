@@ -17,7 +17,6 @@ public class Coordenada1D extends Coordenada{
     /**
      * Constructor for Coordenada using an x and y coordinate
      * @param x int coordinate
-     * @param y int coordinate
      * @throws ExcepcionCoordenadaIncorrecta 
      */
     public Coordenada1D(int x) throws ExcepcionCoordenadaIncorrecta {

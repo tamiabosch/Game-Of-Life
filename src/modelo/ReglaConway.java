@@ -12,6 +12,9 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
  */
 public class ReglaConway extends Regla{
 	
+	/**
+	 * empty Constructor
+	 */
 	public ReglaConway() {
 		
 	}
@@ -21,6 +24,7 @@ public class ReglaConway extends Regla{
 	 *
 	 * @param tablero the tablero
 	 * @param posicion the posicion
+	 * @throws ExcepcionPosicionFueraTablero
 	 * @return the estado celda
 	 */
 	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) throws ExcepcionPosicionFueraTablero {

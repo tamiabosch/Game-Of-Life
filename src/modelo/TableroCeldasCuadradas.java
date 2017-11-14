@@ -32,7 +32,7 @@ public class TableroCeldasCuadradas extends Tablero2D {
 	 * @throws ExcepcionPosicionFueraTablero
 	 */
 	@Override
-	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion)  throws  ExcepcionPosicionFueraTablero {
+	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) throws ExcepcionPosicionFueraTablero {
 		if(posicion != null) {
 			try {
 				//casting the posicion
@@ -41,7 +41,7 @@ public class TableroCeldasCuadradas extends Tablero2D {
 				Collection<Coordenada> keys = this.getPosiciones();
 				// Sind die Dimensionen der Tablero kleiner als die Koordinate? Dann null :)
 				if (pos2D.getX() < 0 || pos2D.getY() < 0 || dim2D.getX() <= pos2D.getX() || dim2D.getY() <= pos2D.getY()) {
-					return null;
+					throw new ExcepcionPosicionFueraTablero(dim2D, pos2D);
 				}
 				
 				for (int i = -1; i < 2; i++ ) {

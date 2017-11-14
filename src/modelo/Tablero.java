@@ -35,7 +35,7 @@ public abstract class Tablero {
 		/**
 		 * constructor of Tablero
 		 * initialises new dead celdas with hashmap
-		 * @param dimensiones
+		 * @param dimensiones Cooordenada
 		 */
 		protected Tablero(Coordenada dimensiones) {
 			this.dimensiones = dimensiones;
@@ -45,24 +45,26 @@ public abstract class Tablero {
 		/**
 		 * abstract method
 		 * Returns all neighbours of a Coordenada in an ArrayList
-		 * @param posicion
+		 * @param posicion Coordenada
 		 * @return ArrayList with neighbours
+		 * @throws ExcepcionPosicionFueraTablero
 		 */
 		public abstract ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) throws ExcepcionPosicionFueraTablero;
 
 		/**
 		 * checks if the Patron fits into the Tablero and adds the patron into the tablero
-		 * @param patron
-		 * @param coordenadaInicial
-		 * @return if patron fits or not
+		 * @param patron Patron
+		 * @param coordenadaInicial Coordenada
 		 * @throws ExcepcionPosicionFueraTablero 
 		 */
 		public void cargaPatron(Patron patron, Coordenada coordenadaInicial) throws ExcepcionPosicionFueraTablero {
 			if(patron != null && coordenadaInicial != null) {
-				
 				try {
-//					Coordenada lastPatronCoordenada = patron.getTablero().getDimensiones().suma(coordenadaInicial);
+					Coordenada lastPatronCoordenada = patron.getTablero().getDimensiones().suma(coordenadaInicial);
 					Collection<Coordenada> keysPatron = patron.getPosiciones();
+					for(Coordenada key: keysPatron) {
+						this.getCelda(key.suma(coordenadaInicial));
+					}
 					for(Coordenada key: keysPatron) {
 						this.setCelda(key.suma(coordenadaInicial), patron.getCelda(key));
 					}
@@ -81,7 +83,7 @@ public abstract class Tablero {
 		
 		/**
 		 * checks if the tablero contains a certain coordenada
-		 * @param posicion
+		 * @param posicion Coordenada
 		 * @return boolean 
 		 */
 		public boolean contiene(Coordenada posicion) {
@@ -106,7 +108,7 @@ public abstract class Tablero {
 		
 		/**
 		 * returns if the celda is dead or alive
-		 * @param posicion
+		 * @param posicion Coordenada
 		 * @return EstadoCelda
 		 * @throws ExcepcionPosicionFueraTablero 
 		 */
@@ -132,6 +134,7 @@ public abstract class Tablero {
 		
 		/**
 		 * Getter
+		 * @return Coordenada coordenada
 		 */
 		public Coordenada getNotFittingC() {
 			return notFittingC;
@@ -139,6 +142,7 @@ public abstract class Tablero {
 		
 		/**
 		 * Getter
+		 * @return HashMap celdas
 		 */
 		public HashMap<Coordenada, EstadoCelda> getCeldas() {
 			return celdas;
@@ -146,8 +150,8 @@ public abstract class Tablero {
 		
 		/**
 		 * Sets posicion and status of a specific celda 
-		 * @param posicion
-		 * @param e
+		 * @param posicion Coordenada
+		 * @param e EstadoCelda
 		 * @throws ExcepcionPosicionFueraTablero 
 		 */
 		public void setCelda(Coordenada posicion, EstadoCelda e) throws ExcepcionPosicionFueraTablero {

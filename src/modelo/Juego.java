@@ -33,8 +33,8 @@ public class Juego {
 	
 	/**
 	 * Constructor for Juego with a tablero and regla
-	 * @param tablero
-	 * @param regla
+	 * @param tablero Tablero
+	 * @param regla Regla
 	 */
 	public Juego(Tablero tablero, Regla regla) {
 		if(tablero != null && regla != null) {

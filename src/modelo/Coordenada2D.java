@@ -25,7 +25,7 @@ public class Coordenada2D extends Coordenada {
      * Constructor for Coordenada using an x and y coordinate
      * @param x int coordinate
      * @param y int coordinate
-     * @throws ExcepcionCoordenada2DIncorrecta 
+     * @throws ExcepcionCoordenadaIncorrecta 
      */
     public Coordenada2D(int x, int y) throws ExcepcionCoordenadaIncorrecta  {
     	if(x >= 0 && y >= 0) {

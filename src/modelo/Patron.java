@@ -43,7 +43,7 @@ public class Patron {
 
 	/**
 	 * getter for the status of cells
-	 * @param posicion
+	 * @param posicion Coordenada
 	 * @return Estado of the celdas
 	 * @throws ExcepcionPosicionFueraTablero 
 	 */
