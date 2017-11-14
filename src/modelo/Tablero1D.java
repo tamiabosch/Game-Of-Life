@@ -51,7 +51,7 @@ public class Tablero1D extends Tablero {
 				//Collection<Coordenada> keys = this.getPosiciones();
 				// Sind die Dimensionen der Tablero kleiner als die Koordinate? Dann null :)
 				if (pos1D.getX() < 0 || dim1D.getX() <= pos1D.getX()) {
-					return null;
+					throw new ExcepcionPosicionFueraTablero(dim1D, pos1D);
 				}
 				
 				if (pos1D.getX()-1 >= 0) {

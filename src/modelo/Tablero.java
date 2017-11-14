@@ -38,8 +38,12 @@ public abstract class Tablero {
 		 * @param dimensiones Cooordenada
 		 */
 		protected Tablero(Coordenada dimensiones) {
-			this.dimensiones = dimensiones;
-			celdas = new HashMap<Coordenada, EstadoCelda>();
+			if(dimensiones != null) {
+				this.dimensiones = dimensiones;
+				celdas = new HashMap<Coordenada, EstadoCelda>();
+			} else {
+				throw new ExcepcionArgumentosIncorrectos("Dimensiones is null, while creating a Tablero");
+			}
 		}
 		
 		/**

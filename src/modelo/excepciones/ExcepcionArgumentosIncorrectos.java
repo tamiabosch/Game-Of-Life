@@ -34,4 +34,12 @@ public class ExcepcionArgumentosIncorrectos extends ExcepcionEjecucion {
 		super(causa);		
 	}
 	
+	/**
+	 * Prints out an Error Message
+	 * @return String message
+	 */
+	public String getMessage() {
+		return "ExcepcionArgumentosIncorrectos";
+	}
+	
 }

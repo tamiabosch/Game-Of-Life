@@ -29,7 +29,7 @@ public class ReglaConway extends Regla{
 	 */
 	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) throws ExcepcionPosicionFueraTablero {
 		if(tablero != null && posicion != null) {
-			try {
+
 				ArrayList<Coordenada> vecinas = tablero.getPosicionesVecinasCCW(posicion);
 				int aliveNeigbours = 0;
 
@@ -59,15 +59,12 @@ public class ReglaConway extends Regla{
 						return EstadoCelda.MUERTA;
 					}
 				}
-			} catch(ExcepcionPosicionFueraTablero e) {
-				e.getMessage();
-			}
+		
 			
 		} else {
 			throw new ExcepcionArgumentosIncorrectos("Tablero or Coordenada is null!");
 		}
-		//probleme hier?
-		return null;
+
 		
 	}	
 		

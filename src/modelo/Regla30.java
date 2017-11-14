@@ -28,7 +28,7 @@ public class Regla30 extends Regla {
 	 */
 	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) throws ExcepcionPosicionFueraTablero {
 		if(tablero != null && posicion != null) {
-			try {
+		
 				ArrayList<Coordenada> vecinas = tablero.getPosicionesVecinasCCW(posicion);
 				
 				if (vecinas.size() < 2) {
@@ -56,9 +56,7 @@ public class Regla30 extends Regla {
 					return EstadoCelda.MUERTA; 
 				}
 
-			} catch(ExcepcionPosicionFueraTablero e) {
-				e.getMessage();
-			}
+			
 			
 		} else {
 			throw new ExcepcionArgumentosIncorrectos("Tablero or Coordenada is null!");

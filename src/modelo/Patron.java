@@ -25,8 +25,12 @@ public class Patron {
 	 * @param tablero 
 	 */
 	public Patron (String nombre, Tablero tablero) {
-		this.nombre = nombre;
-		this.tablero = tablero;
+		if(nombre != null && tablero != null) {
+			this.nombre = nombre;
+			this.tablero = tablero;
+		} else {
+			throw new ExcepcionArgumentosIncorrectos("Nombre or Tablero is null, while creating a Patron");
+		}
 	}
 	
 	/**
