@@ -47,11 +47,10 @@ public abstract class Tablero {
 		}
 		
 		/**
-		 * abstract method
-		 * Returns all neighbours of a Coordenada in an ArrayList
+		 * Abstract Method
 		 * @param posicion Coordenada
-		 * @return ArrayList with neighbours
-		 * @throws ExcepcionPosicionFueraTablero
+		 * @return ArrayList
+		 * @throws ExcepcionPosicionFueraTablero 
 		 */
 		public abstract ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) throws ExcepcionPosicionFueraTablero;
 

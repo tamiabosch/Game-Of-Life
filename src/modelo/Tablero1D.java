@@ -22,7 +22,7 @@ public class Tablero1D extends Tablero {
 	private Coordenada1D dim1D;
 	
 	/**
-	 * Constructor for Tablero1D calls the constructor of Tablero
+	 * Constructor for Tablero1D
 	 * @param ancho int
 	 * @throws ExcepcionCoordenadaIncorrecta
 	 */
