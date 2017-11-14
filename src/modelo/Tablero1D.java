@@ -11,20 +11,21 @@ import modelo.excepciones.ExcepcionEjecucion;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
 /**
+ * The Class Tablero1D.
+ *
  * @author Tamia Bosch
- *Tablero 1D with onedimensional coordinates
+ * Tablero 1D with onedimensional coordinates
  */
 public class Tablero1D extends Tablero {
 
-	/**
-	 * casting the dimensiones into a Coordenada1D
-	 */
+	/** casting the dimensiones into a Coordenada1D. */
 	private Coordenada1D dim1D;
 	
 	/**
-	 * Constructor for Tablero1D
+	 * Constructor for Tablero1D.
+	 *
 	 * @param ancho int
-	 * @throws ExcepcionCoordenadaIncorrecta
+	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
 	 */
 	public Tablero1D(int ancho) throws ExcepcionCoordenadaIncorrecta {
 		super(new Coordenada1D(ancho));
@@ -37,10 +38,11 @@ public class Tablero1D extends Tablero {
 
 
 	/**
-	 * getPosicionesVecinasCCW returns all neighbours in an Arraylist
+	 * getPosicionesVecinasCCW returns all neighbours in an Arraylist.
+	 *
 	 * @param posicion Coordenada
-	 * @return ArrayList with neighbours
-	 * @throws ExcepcionPosicionFueraTablero
+	 * @return the posiciones vecinas CCW
+	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 */
 	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) throws ExcepcionPosicionFueraTablero {
 		if(posicion != null) {
@@ -76,8 +78,9 @@ public class Tablero1D extends Tablero {
 	}
 	
 	/**
-	 * Overrides toString() method and gives back a string with a string representation of the tablero
-	 *@return String of Cellstructure
+	 * Overrides toString() method and gives back a string with a string representation of the tablero.
+	 *
+	 * @return String of Cellstructure
 	 */
 	@Override
 	public String toString() {

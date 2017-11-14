@@ -6,26 +6,26 @@ import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
 /**
- * defines  the rules if a cell lives or not depending on the neighbours
- * @author Tami
+ * defines  the rules if a cell lives or not depending on the neighbours.
  *
+ * @author Tami
  */
 public class ReglaConway extends Regla{
 	
 	/**
-	 * empty Constructor
+	 * empty Constructor.
 	 */
 	public ReglaConway() {
 		
 	}
 
 	/**
-	 * Calculates the state of the celdas depending on it's neighbours
+	 * Calculates the state of the celdas depending on it's neighbours.
 	 *
 	 * @param tablero the tablero
 	 * @param posicion the posicion
 	 * @return the estado celda
-	 * @throws ExcepcionPosicionFueraTablero
+	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 */
 	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) throws ExcepcionPosicionFueraTablero {
 		if(tablero != null && posicion != null) {

@@ -6,25 +6,26 @@ import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
 /**
- * The Class Regla30 which extends the abstract class Regla
+ * The Class Regla30 which extends the abstract class Regla.
+ *
  * @author Tamia Bosch
  */
 public class Regla30 extends Regla {
 
 	/**
-	 * Instantiates a new regla 30
+	 * Instantiates a new regla 30.
 	 */
 	public Regla30() {
 		
 	}
 	
 	/**
-	 * Calculates the state of the celdas depending on it's neighbours
+	 * Calculates the state of the celdas depending on it's neighbours.
 	 *
 	 * @param tablero the tablero
 	 * @param posicion the posicion
 	 * @return the estado celda
-	 * @throws ExcepcionPosicionFueraTablero
+	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 */
 	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) throws ExcepcionPosicionFueraTablero {
 		if(tablero != null && posicion != null) {
