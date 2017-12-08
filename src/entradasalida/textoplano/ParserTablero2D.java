@@ -19,38 +19,24 @@ public class ParserTablero2D implements IParserTablero{
 	public Tablero leeTablero(String cadena) throws ExcepcionLectura {
 		if(cadena==null) {
 			throw new ExcepcionArgumentosIncorrectos();
-		} else if(!cadena.matches("[[*]* \\s*]*")) {
+		} else if(!cadena.matches("[[*]* \\s*]*") || isUneven(cadena)) {
 			throw new ExcepcionLectura("Failure in leeTablero 2D, cadena doesn't match the criteria");			
 		} else {
 			try {
 				//evtl -1 auch bei meiner kollegin
-				int xDim = cadena.indexOf('\n');
-				//getting the height of the tablero
-				int yDim;
-				int lineBreak = 0;
-				for(int i = 0; i < cadena.length(); i++) {
-					if(cadena.charAt(i) == 'n') {
-						lineBreak++;
-					}
-				}
-				
-				if(cadena.charAt(cadena.length() - 1) == 'n') {
-					yDim = lineBreak;
-				} else {
-					yDim = lineBreak +1;
-				}
+				String[] lines = cadena.split("\r\n|\r|\n");
+				int xDim = lines[0].length();
+				//int xDim = cadena.indexOf('\n');
+				int yDim = lines.length;
 				
 				//initializing Tablero
 				Tablero tablero = new Tablero2D(xDim,yDim);
 				
-				int index = 0;
 				for(int y = 0; y<yDim; y++) {
-					if(y!=0) index += 2;
 					for(int x = 0; x<xDim; x++) {
-						index += x;
-						if(cadena.charAt(index) == '*') {
+						if(lines[y].charAt(xDim) == '*') {
 							tablero.setCelda(new Coordenada2D(x,y), EstadoCelda.VIVA);
-						} else if(cadena.charAt(index) == ' ') {
+						} else if(lines[y].charAt(xDim) == ' ') {
 							tablero.setCelda(new Coordenada2D(x,y), EstadoCelda.MUERTA);
 						}
 					}
@@ -64,6 +50,21 @@ public class ParserTablero2D implements IParserTablero{
 
 		}
 		return null;
+	}
+	
+	public boolean isUneven(String cadena) {
+		//true wenn reihen nicht gleich sind
+		boolean uneven = false;
+		String[] lines = cadena.split("\r\n|\r|\n");
+		//extract first row to test with other rows
+		int firstRow = lines[0].length();
+		for (String lenght : lines) {
+			if(lenght.length() == firstRow) {
+				uneven = false;
+			} else {
+				uneven = true;
+			}
+		} return uneven;
 	}
 
 }
