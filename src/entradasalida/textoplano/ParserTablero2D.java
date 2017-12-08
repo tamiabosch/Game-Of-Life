@@ -40,13 +40,14 @@ public class ParserTablero2D implements IParserTablero{
 					yDim = lineBreak +1;
 				}
 				
+				//initializing Tablero
 				Tablero tablero = new Tablero2D(xDim,yDim);
 				
-				int row = -1;
 				int index = 0;
 				for(int y = 0; y<yDim; y++) {
-					row++;
+					if(y!=0) index += 2;
 					for(int x = 0; x<xDim; x++) {
+						index += x;
 						if(cadena.charAt(index) == '*') {
 							tablero.setCelda(new Coordenada2D(x,y), EstadoCelda.VIVA);
 						} else if(cadena.charAt(index) == ' ') {
