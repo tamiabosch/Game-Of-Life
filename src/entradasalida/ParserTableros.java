@@ -10,6 +10,7 @@ public class ParserTableros {
 
 	public ParserTableros() {}
 	
+	//TODO: It also rethrows the exceptions thrown by ParserTablero1D and ParserTablero2D. ????!!!!
 	public Tablero leeTablero(String cadena) throws ExcepcionLectura {
 		if(cadena==null) {
 			throw new ExcepcionArgumentosIncorrectos("The cadena String is null");

@@ -3,6 +3,7 @@ package entradasalida.excepciones;
 public class ExcepcionLectura extends Exception {
 
 	public ExcepcionLectura() {
+		System.out.println("ExcepcionLectura");
 	}
 	
 	public ExcepcionLectura(String s) {
