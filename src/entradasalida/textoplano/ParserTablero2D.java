@@ -24,7 +24,7 @@ public class ParserTablero2D implements IParserTablero{
 		} else {
 			try {
 				//evtl -1 auch bei meiner kollegin
-				int xDim = cadena.indexOf("\\");
+				int xDim = cadena.indexOf('\n');
 				//getting the height of the tablero
 				int yDim;
 				int lineBreak = 0;
