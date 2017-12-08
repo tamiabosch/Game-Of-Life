@@ -16,7 +16,7 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
  * @author Tamia Bosch
  * Tablero 1D with onedimensional coordinates
  */
-public class Tablero1D extends Tablero {
+public class Tablero1D extends Tablero implements Imprimible {
 
 	/** casting the dimensiones into a Coordenada1D. */
 	private Coordenada1D dim1D;
@@ -109,6 +109,15 @@ public class Tablero1D extends Tablero {
 			throw new ExcepcionEjecucion(e);
 		}
 		
+	}
+
+
+	/**
+	 * Method immplemented from Imprimibe 
+	 */
+	@Override
+	public String generaCadena() {
+		return toString();
 	}
 
 }
