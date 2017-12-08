@@ -31,7 +31,7 @@ public class ParserTablero1D implements IParserTablero{
 				for(int i=0; i < cadena.length(); i++) {
 					if(cadena.charAt(i) == '*') {
 						tablero.setCelda(new Coordenada1D(i), EstadoCelda.VIVA);
-					} else if(cadena.charAt(i) == '*') {
+					} else if(cadena.charAt(i) == ' ') {
 						tablero.setCelda(new Coordenada1D(i), EstadoCelda.MUERTA);
 					}
 				}
