@@ -21,12 +21,6 @@ public class GeneradorFicheroPlano implements IGeneradorFichero{
 	@Override
 	public void generaFichero(File file, Juego juego, int iteraciones) throws ExcepcionGeneracion {
 		
-	  /*  for i=0 to iteraciones-1 do
-	         juego.actualiza()
-	         // append to the file the string obtained from
-	         // generarCadena of Tablero (which must implement Imprimible)
-	    endfor */
-		
 		if(!(juego.getTablero() instanceof Imprimible) || iteraciones < 1) {
 			throw new ExcepcionGeneracion("Iteracions are not correct: " + iteraciones);
 		} else if(juego == null || file == null) {
@@ -34,17 +28,15 @@ public class GeneradorFicheroPlano implements IGeneradorFichero{
 		} else {
 			for (int i = 0; i < iteraciones ; i++) {
 				juego.actualiza();
-				Tablero tab = juego.getTablero();
-				if(tab instanceof TableroCeldasCuadradas) {
-					String cadena2D  = ((TableroCeldasCuadradas) tab).generaCadena();
-					try {
-						//TODO:append string to file
-						PrintWriter pw = new PrintWriter(file);
-						//PrintWriter pw = new PrintWriter(new FileOutputStream(new File("persons.txt"), true /* append = true */));
-					} catch (FileNotFoundException e) {
-						throw new ExcepcionGeneracion();
-					}
-					String cadena1D  = ((Tablero1D) tab).generaCadena();
+				Imprimible tab = (Imprimible) juego.getTablero();
+				String cadena  = tab.generaCadena();
+				try {
+					//TODO:append string to file
+					PrintWriter pw = new PrintWriter(new FileOutputStream(file, true));
+					pw.append(cadena);
+					pw.close();
+				} catch (FileNotFoundException e) {
+					throw new ExcepcionGeneracion();
 				}
 			}
 		}

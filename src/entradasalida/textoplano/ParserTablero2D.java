@@ -34,13 +34,14 @@ public class ParserTablero2D implements IParserTablero{
 				
 				for(int y = 0; y<yDim; y++) {
 					for(int x = 0; x<xDim; x++) {
-						if(lines[y].charAt(xDim) == '*') {
+						if(lines[y].charAt(x) == '*') {
 							tablero.setCelda(new Coordenada2D(x,y), EstadoCelda.VIVA);
-						} else if(lines[y].charAt(xDim) == ' ') {
+						} else if(lines[y].charAt(x) == ' ') {
 							tablero.setCelda(new Coordenada2D(x,y), EstadoCelda.MUERTA);
 						}
 					}
 				}
+				return tablero;
 				
 			} catch (ExcepcionCoordenadaIncorrecta e) {
 				throw new ExcepcionEjecucion(e);
@@ -49,7 +50,6 @@ public class ParserTablero2D implements IParserTablero{
 			}
 
 		}
-		return null;
 	}
 	
 	public boolean isUneven(String cadena) {

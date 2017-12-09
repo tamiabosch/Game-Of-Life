@@ -29,7 +29,16 @@ public class Patron {
 			this.nombre = nombre;
 			this.tablero = tablero;
 		} else {
-			throw new ExcepcionArgumentosIncorrectos("Nombre or Tablero is null, while creating a Patron");
+			if (nombre==null) {
+				throw new ExcepcionArgumentosIncorrectos("Nombre is null, while creating a Patron");
+
+			} else if (tablero==null) {
+				throw new ExcepcionArgumentosIncorrectos("Tablero is null, while creating a Patron");
+
+			} else {
+				throw new ExcepcionArgumentosIncorrectos("Nombre or Tablero is null, while creating a Patron");
+
+			}
 		}
 	}
 	

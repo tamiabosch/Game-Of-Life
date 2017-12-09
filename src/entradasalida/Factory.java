@@ -22,7 +22,7 @@ public class Factory {
 	
 	public Factory() {}
 	
-	public IGeneradorFichero creaGeneradorFichero(Tablero tablero, String extension) throws ExcepcionGeneracion {
+	public static IGeneradorFichero creaGeneradorFichero(Tablero tablero, String extension) throws ExcepcionGeneracion {
 		if(tablero == null || extension == null) {
 			throw new ExcepcionArgumentosIncorrectos();
 		} else if(extension.equals("txt")){
@@ -43,7 +43,7 @@ public class Factory {
 		}
 	}
 	
-	public Regla creaRegla(Tablero tablero) {
+	public static Regla creaRegla(Tablero tablero) {
 		if(tablero == null) {
 			throw new ExcepcionArgumentosIncorrectos();
 		} else if (tablero instanceof Tablero1D) {
@@ -57,7 +57,7 @@ public class Factory {
 		}
 	}
 
-	public Tablero creaTablero(Coordenada dimensiones) {
+	public static Tablero creaTablero(Coordenada dimensiones) {
 		if(dimensiones == null) {
 			throw new ExcepcionArgumentosIncorrectos();
 		} else if(dimensiones instanceof Coordenada1D) {
