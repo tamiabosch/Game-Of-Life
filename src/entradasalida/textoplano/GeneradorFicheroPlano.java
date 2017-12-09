@@ -9,9 +9,6 @@ import entradasalida.IGeneradorFichero;
 import entradasalida.excepciones.ExcepcionGeneracion;
 import modelo.Imprimible;
 import modelo.Juego;
-import modelo.Tablero;
-import modelo.Tablero1D;
-import modelo.TableroCeldasCuadradas;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 
 /**
@@ -52,7 +49,7 @@ public class GeneradorFicheroPlano implements IGeneradorFichero{
 					pw.append(cadena);
 					pw.close();
 				} catch (FileNotFoundException e) {
-					throw new ExcepcionGeneracion();
+					throw new ExcepcionGeneracion(e);
 				}
 			}
 		}
