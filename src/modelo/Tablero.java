@@ -13,28 +13,25 @@ import modelo.excepciones.ExcepcionEjecucion;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
 /**
- * Tablero initialises a HashMap with dead cells and gives various method to change the state of the cells  
+ * Tablero initialises a HashMap with dead cells and gives various method to change the state of the cells  .
+ *
  * @author Tamia Bosch
  */
 public abstract class Tablero {
-		/**
-		 * HashMap with coordenadas as key an Estado Celdas as value
-		 */
+		
+		/** HashMap with coordenadas as key an Estado Celdas as value. */
 		protected HashMap<Coordenada, EstadoCelda> celdas;
 		
-		/**
-		 * dimensiones, Coordenada from the bottom right
-		 */
+		/** dimensiones, Coordenada from the bottom right. */
 		protected Coordenada dimensiones;
 		
-		/**
-		 * lates coordenada of tablero which does not fit into the pattern
-		 */
+		/** lates coordenada of tablero which does not fit into the pattern. */
 		protected Coordenada notFittingC;
 		
 		/**
 		 * constructor of Tablero
-		 * initialises new dead celdas with hashmap
+		 * initialises new dead celdas with hashmap.
+		 *
 		 * @param dimensiones Cooordenada
 		 */
 		protected Tablero(Coordenada dimensiones) {
@@ -47,18 +44,20 @@ public abstract class Tablero {
 		}
 		
 		/**
-		 * Abstract Method
+		 * Abstract Method.
+		 *
 		 * @param posicion Coordenada
 		 * @return ArrayList
-		 * @throws ExcepcionPosicionFueraTablero 
+		 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 		 */
 		public abstract ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) throws ExcepcionPosicionFueraTablero;
 
 		/**
-		 * checks if the Patron fits into the Tablero and adds the patron into the tablero
+		 * checks if the Patron fits into the Tablero and adds the patron into the tablero.
+		 *
 		 * @param patron Patron
 		 * @param coordenadaInicial Coordenada
-		 * @throws ExcepcionPosicionFueraTablero 
+		 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 		 */
 		public void cargaPatron(Patron patron, Coordenada coordenadaInicial) throws ExcepcionPosicionFueraTablero {
 			if(patron != null && coordenadaInicial != null) {
@@ -85,9 +84,10 @@ public abstract class Tablero {
 		
 		
 		/**
-		 * checks if the tablero contains a certain coordenada
+		 * checks if the tablero contains a certain coordenada.
+		 *
 		 * @param posicion Coordenada
-		 * @return boolean 
+		 * @return boolean
 		 */
 		public boolean contiene(Coordenada posicion) {
 			if(posicion != null) {
@@ -102,7 +102,8 @@ public abstract class Tablero {
 		}
 		
 		/**
-		 * returns all the Coordenadas of the Celdas
+		 * returns all the Coordenadas of the Celdas.
+		 *
 		 * @return Collection of keySet
 		 */
 		public Collection<Coordenada> getPosiciones() {
@@ -110,10 +111,11 @@ public abstract class Tablero {
 		}
 		
 		/**
-		 * returns if the celda is dead or alive
+		 * returns if the celda is dead or alive.
+		 *
 		 * @param posicion Coordenada
 		 * @return EstadoCelda
-		 * @throws ExcepcionPosicionFueraTablero 
+		 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 		 */
 		public EstadoCelda getCelda(Coordenada posicion) throws ExcepcionPosicionFueraTablero {
 			if(posicion != null) {
@@ -128,15 +130,17 @@ public abstract class Tablero {
 		}
 		
 		/**
-		 * Getter for dimensiones
+		 * Getter for dimensiones.
+		 *
 		 * @return the dimensiones
-		 **/
+		 */
 		public Coordenada getDimensiones() {
 			return dimensiones;
 		}
 		
 		/**
-		 * Getter
+		 * Getter.
+		 *
 		 * @return Coordenada coordenada
 		 */
 		public Coordenada getNotFittingC() {
@@ -144,7 +148,8 @@ public abstract class Tablero {
 		}
 		
 		/**
-		 * Getter
+		 * Getter.
+		 *
 		 * @return HashMap celdas
 		 */
 		public HashMap<Coordenada, EstadoCelda> getCeldas() {
@@ -152,10 +157,11 @@ public abstract class Tablero {
 		}
 		
 		/**
-		 * Sets posicion and status of a specific celda 
+		 * Sets posicion and status of a specific celda .
+		 *
 		 * @param posicion Coordenada
 		 * @param e EstadoCelda
-		 * @throws ExcepcionPosicionFueraTablero 
+		 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 		 */
 		public void setCelda(Coordenada posicion, EstadoCelda e) throws ExcepcionPosicionFueraTablero {
 			if(posicion != null) {

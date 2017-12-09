@@ -4,8 +4,9 @@
 package modelo.excepciones;
 
 /**
- * @author Tami
+ * The Class ExcepcionEjecucion.
  *
+ * @author Tami
  */
 public class ExcepcionEjecucion extends RuntimeException {
 	

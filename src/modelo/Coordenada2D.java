@@ -8,24 +8,24 @@ import modelo.excepciones.ExcepcionCoordenada2DIncorrecta;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 
 /**
- * Coordenada creates a coordinate with x and y value
+ * Coordenada creates a coordinate with x and y value.
+ *
  * @author Tamia Bosch
  */
 public class Coordenada2D extends Coordenada {
-    /**
-     * private instancevariable x
-     */
+    
+    /** private instancevariable x. */
     private int x;
-    /**
-     * private instancevariable y
-     */
+    
+    /** private instancevariable y. */
     private int y;
   
     /**
-     * Constructor for Coordenada using an x and y coordinate
+     * Constructor for Coordenada using an x and y coordinate.
+     *
      * @param x int coordinate
      * @param y int coordinate
-     * @throws ExcepcionCoordenadaIncorrecta 
+     * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
      */
     public Coordenada2D(int x, int y) throws ExcepcionCoordenadaIncorrecta  {
     	if(x >= 0 && y >= 0) {
@@ -38,7 +38,8 @@ public class Coordenada2D extends Coordenada {
     }
 
     /**
-     * Constructor for Coordenada copying an other coordenate
+     * Constructor for Coordenada copying an other coordenate.
+     *
      * @param otra Coordenada
      */
     public Coordenada2D(Coordenada2D otra) {
@@ -52,7 +53,8 @@ public class Coordenada2D extends Coordenada {
     }
 
     /**
-     * Returns the coordinates as a String
+     * Returns the coordinates as a String.
+     *
      * @return String coordinate
      */
     @Override
@@ -62,7 +64,8 @@ public class Coordenada2D extends Coordenada {
     }
 
     /**
-     * overrides the equals method and compares two Objects to eachother
+     * overrides the equals method and compares two Objects to eachother.
+     *
      * @param otro an Object which gets compared
      * @return boolean if it's the same Object or not
      */
@@ -78,7 +81,9 @@ public class Coordenada2D extends Coordenada {
     }
     
 	/**
-	 * Overrides hashCode() method and gives back an int
+	 * Overrides hashCode() method and gives back an int.
+	 *
+	 * @return the int
 	 */
 	@Override
 	public int hashCode() {
@@ -91,7 +96,8 @@ public class Coordenada2D extends Coordenada {
 
     
     /**
-     * getter for x coordinate
+     * getter for x coordinate.
+     *
      * @return int x
      */
     public int getX() {
@@ -99,18 +105,20 @@ public class Coordenada2D extends Coordenada {
     }
 
 	/**
-     * getter for y coordinate
-     * @return int y
-     */
+	 * getter for y coordinate.
+	 *
+	 * @return int y
+	 */
     public int getY() {
         return y;
     }
 
     /**
-     * Is summarising the x and y values of two Coordenada Objects
+     * Is summarising the x and y values of two Coordenada Objects.
+     *
      * @param otra Coordenada
      * @return new Coordenada2D
-     * @throws ExcepcionCoordenadaIncorrecta
+     * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
      */
     @Override
     public Coordenada2D suma(Coordenada otra) throws ExcepcionCoordenadaIncorrecta {

@@ -4,8 +4,9 @@
 package modelo.excepciones;
 
 /**
- * @author Tami
+ * The Class ExcepcionCoordenada2DIncorrecta.
  *
+ * @author Tamia Bosch
  */
 public class ExcepcionCoordenada2DIncorrecta extends ExcepcionCoordenadaIncorrecta {
 	
@@ -27,7 +28,8 @@ public class ExcepcionCoordenada2DIncorrecta extends ExcepcionCoordenadaIncorrec
 	}
 	
 	/**
-	 * returns String ErrorMessage
+	 * returns String ErrorMessage.
+	 *
 	 * @return String message
 	 */
 	public String getMessage() {
@@ -35,6 +37,8 @@ public class ExcepcionCoordenada2DIncorrecta extends ExcepcionCoordenadaIncorrec
 	}
 
 	/**
+	 * Gets the x.
+	 *
 	 * @return the x
 	 */
 	public int getX() {
@@ -42,6 +46,8 @@ public class ExcepcionCoordenada2DIncorrecta extends ExcepcionCoordenadaIncorrec
 	}
 
 	/**
+	 * Gets the y.
+	 *
 	 * @return the y
 	 */
 	public int getY() {

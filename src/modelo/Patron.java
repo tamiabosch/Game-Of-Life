@@ -6,23 +6,23 @@ import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
 /**
- * creates a pattern which you can put into the juego
+ * creates a pattern which you can put into the juego.
+ *
  * @author Tamia Bosch
  */
 public class Patron {
-	/**
-	 * Name of Patron
-	 */
+	
+	/** Name of Patron. */
 	private String nombre;
-	/**
-	 * the tablero of patron
-	 */
+	
+	/** the tablero of patron. */
 	private Tablero tablero;
 	
 	/**
-	 * Constructor for Patron with:
+	 * Constructor for Patron with:.
+	 *
 	 * @param nombre name of Patron
-	 * @param tablero 
+	 * @param tablero the tablero
 	 */
 	public Patron (String nombre, Tablero tablero) {
 		if(nombre != null && tablero != null) {
@@ -43,8 +43,9 @@ public class Patron {
 	}
 	
 	/**
-	 * Overrides the toString() method and gives back a representation of the current pattern
-	 * @return name + the tablero of the cells 
+	 * Overrides the toString() method and gives back a representation of the current pattern.
+	 *
+	 * @return name + the tablero of the cells
 	 */
 	@Override
 	public String toString() {
@@ -55,10 +56,11 @@ public class Patron {
 	}
 
 	/**
-	 * getter for the status of cells
+	 * getter for the status of cells.
+	 *
 	 * @param posicion Coordenada
 	 * @return Estado of the celdas
-	 * @throws ExcepcionPosicionFueraTablero 
+	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 */
 	public EstadoCelda getCelda(Coordenada posicion) throws ExcepcionPosicionFueraTablero {
 		if(posicion != null) {
@@ -72,7 +74,8 @@ public class Patron {
 	}
 	
 	/**
-	 * String of the name of patron
+	 * String of the name of patron.
+	 *
 	 * @return the nombre
 	 */
 	public String getNombre() {
@@ -80,7 +83,8 @@ public class Patron {
 	}
 	
 	/**
-	 * getter for the tablero of the patron
+	 * getter for the tablero of the patron.
+	 *
 	 * @return tablero
 	 */
 	public Tablero getTablero() {
@@ -88,7 +92,8 @@ public class Patron {
 	}
 	
 	/**
-	 * getter for all the posiciones saved in a Collection
+	 * getter for all the posiciones saved in a Collection.
+	 *
 	 * @return posiciones in a collection
 	 */
 	public Collection<Coordenada> getPosiciones() {

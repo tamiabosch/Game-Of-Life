@@ -13,26 +13,24 @@ import modelo.excepciones.ExcepcionEjecucion;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
 /**
- * Class Juego with a tablero and reglaConway
- * @author Tami
+ * Class Juego with a tablero and reglaConway.
  *
+ * @author Tamia Bosch
  */
 public class Juego {
-	/**
-	 * Juego has a Tablero
-	 */
+	
+	/** Juego has a Tablero. */
 	private Tablero tablero;
-	/**
-	 * the rules for the Juego
-	 */
+	
+	/** the rules for the Juego. */
 	private Regla regla;
-	/**
-	 * Arraylist with all patrones which are in the game
-	 */
+	
+	/** Arraylist with all patrones which are in the game. */
 	private ArrayList<Patron> patronesUsados = new ArrayList<Patron>();
 	
 	/**
-	 * Constructor for Juego with a tablero and regla
+	 * Constructor for Juego with a tablero and regla.
+	 *
 	 * @param tablero Tablero
 	 * @param regla Regla
 	 */
@@ -46,10 +44,11 @@ public class Juego {
 	}
 	
 	/**
-	 * Tries to load the pattern and store it on patronesUsados
+	 * Tries to load the pattern and store it on patronesUsados.
+	 *
 	 * @param p Patron
 	 * @param posicionInicial Coordenada
-	 * @throws ExcepcionPosicionFueraTablero 
+	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 */
 	public void cargaPatron(Patron p, Coordenada posicionInicial) throws ExcepcionPosicionFueraTablero {
 		if(p != null && posicionInicial != null) {
@@ -61,7 +60,7 @@ public class Juego {
 	}
 	
 	/**
-	 * calcuates the new state of the juego and all it's celdas
+	 * calcuates the new state of the juego and all it's celdas.
 	 */
 	public void actualiza() {
 		try {
@@ -82,6 +81,8 @@ public class Juego {
 	}
 
 	/**
+	 * Gets the tablero.
+	 *
 	 * @return the tablero
 	 */
 	public Tablero getTablero() {
@@ -89,6 +90,8 @@ public class Juego {
 	}
 
 	/**
+	 * Gets the patrones.
+	 *
 	 * @return the patronesUsados
 	 */
 	public ArrayList<Patron> getPatrones() {

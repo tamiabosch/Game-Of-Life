@@ -4,12 +4,13 @@
 package modelo.excepciones;
 
 /**
- * @author Tami
+ * The Class ExcepcionCoordenada1DIncorrecta.
  *
+ * @author Tamia Bosch
  */
 public class ExcepcionCoordenada1DIncorrecta extends ExcepcionCoordenadaIncorrecta {
 	
-	/** The x variable */
+	/**  The x variable. */
 	private int x;
 	
 	/**
@@ -23,7 +24,8 @@ public class ExcepcionCoordenada1DIncorrecta extends ExcepcionCoordenadaIncorrec
 	}
 	
 	/**
-	 * Prints out an Error Message
+	 * Prints out an Error Message.
+	 *
 	 * @return String message
 	 */
 	public String getMessage() {
@@ -31,6 +33,8 @@ public class ExcepcionCoordenada1DIncorrecta extends ExcepcionCoordenadaIncorrec
 	}
 
 	/**
+	 * Gets the x.
+	 *
 	 * @return the x
 	 */
 	public int getX() {

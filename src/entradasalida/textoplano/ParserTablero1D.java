@@ -1,6 +1,7 @@
 package entradasalida.textoplano;
 
 import entradasalida.IParserTablero;
+import entradasalida.excepciones.ExcepcionGeneracion;
 import entradasalida.excepciones.ExcepcionLectura;
 import modelo.Coordenada1D;
 import modelo.EstadoCelda;
@@ -11,12 +12,23 @@ import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionEjecucion;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
+/**
+ * The Class ParserTablero1D.
+ */
 public class ParserTablero1D implements IParserTablero{
 
+	/**
+	 * Instantiates a new parser tablero 1D.
+	 */
 	public ParserTablero1D() {
 	}
 	
-	//imports!!!!
+	/**
+	 * Returns an instance of Tablero1D created from a string containing spaces for dead cells and asterisks for live cells
+	 *
+	 * @param cadena represents string of cells
+	 * @throws ExcepcionLectura excepcion
+	 */
 	@Override
 	public Tablero leeTablero(String cadena) throws ExcepcionLectura {
 		if(cadena==null) {

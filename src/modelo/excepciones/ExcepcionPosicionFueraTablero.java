@@ -6,8 +6,9 @@ package modelo.excepciones;
 import modelo.Coordenada;
 
 /**
- * @author Tami
+ * The Class ExcepcionPosicionFueraTablero.
  *
+ * @author Tami
  */
 public class ExcepcionPosicionFueraTablero extends Exception {
 	
@@ -30,7 +31,8 @@ public class ExcepcionPosicionFueraTablero extends Exception {
 	
 
 	/**
-	 * prints out Error Message
+	 * prints out Error Message.
+	 *
 	 * @return String
 	 */
 	public String getMessage() {
@@ -40,6 +42,8 @@ public class ExcepcionPosicionFueraTablero extends Exception {
 	}
 
 	/**
+	 * Gets the dimensiones.
+	 *
 	 * @return the dimensiones
 	 */
 	public Coordenada getDimensiones() {
@@ -47,6 +51,8 @@ public class ExcepcionPosicionFueraTablero extends Exception {
 	}
 
 	/**
+	 * Gets the coordenada.
+	 *
 	 * @return the coordenada
 	 */
 	public Coordenada getCoordenada() {

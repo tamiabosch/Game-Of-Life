@@ -25,7 +25,8 @@ public class GeneradorGIFTablero1D implements IGeneradorFichero{
 
 
 	/**
-	 * Generates the Gif for a 1D Tablero evolution
+	 * Generates the Gif for a 1D Tablero evolution.
+	 *
 	 * @param file the saved File
 	 * @param juego the juego
 	 * @param iteraciones int of interacion

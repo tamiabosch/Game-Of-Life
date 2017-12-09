@@ -4,8 +4,9 @@
 package modelo.excepciones;
 
 /**
- * @author Tami
+ * The Class ExcepcionArgumentosIncorrectos.
  *
+ * @author Tami
  */
 public class ExcepcionArgumentosIncorrectos extends ExcepcionEjecucion {
 
@@ -35,7 +36,8 @@ public class ExcepcionArgumentosIncorrectos extends ExcepcionEjecucion {
 	}
 	
 	/**
-	 * Prints out an Error Message
+	 * Prints out an Error Message.
+	 *
 	 * @return String message
 	 */
 	public String getMessage() {

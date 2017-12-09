@@ -10,23 +10,21 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import entradasalida.excepciones.ExcepcionGeneracion;
+
 /**
- * Genera un fichero GID usando GIF4J
- * @author drizo
+ * Genera un fichero GID usando GIF4J.
  *
+ * @author drizo
  */
 public class ImagenGIF {
-	/**
-	 * Anchura / altura de un cuadrado
-	 */
+	
+	/** Anchura / altura de un cuadrado. */
 	private static final int PIXELES_CUADRADO = 10;
-	/**
-	 * Ancho de la imagen en número de cuadrados
-	 */
+	
+	/** Ancho de la imagen en número de cuadrados. */
 	private int ancho;
-	/**
-	 * Alto de la imagen en número de cuadrados
-	 */
+	
+	/** Alto de la imagen en número de cuadrados. */
 	private int alto;
 	/**
 	 * Objeto de la lib. GIF4J
@@ -38,7 +36,8 @@ public class ImagenGIF {
 	private BufferedImage bi;
 
 	/**
-	 * Constructor de la clase
+	 * Constructor de la clase.
+	 *
 	 * @param ancho  Ancho de la imagen en numero de cuadrados
 	 * @param alto Alto de la imagen en numero de cuadrados
 	 */
@@ -51,8 +50,10 @@ public class ImagenGIF {
 	    ig2.fillRect(0, 0, ancho*PIXELES_CUADRADO - 1, alto*PIXELES_CUADRADO - 1); // rellena de blanco
 	    ig2.setPaint(Color.BLACK); // color fondo rectángulos
 	}
+	
 	/**
-	 * Pinta un cuadrado en la posición proporcionada
+	 * Pinta un cuadrado en la posición proporcionada.
+	 *
 	 * @param x Columna
 	 * @param y Fila
 	 * @throws ExcepcionGeneracion Cuando la coordenada es incorrecta
@@ -66,8 +67,10 @@ public class ImagenGIF {
 		}
 		ig2.fill(new Rectangle(x*PIXELES_CUADRADO, y*PIXELES_CUADRADO, PIXELES_CUADRADO, PIXELES_CUADRADO)); //draw no pinta el fondo, fill sí
 	}
+	
 	/**
-	 * Guarda el fichero gif
+	 * Guarda el fichero gif.
+	 *
 	 * @param file Fichero donde guardar
 	 * @throws ExcepcionGeneracion Lanzada cuando hay un error de entrada / salida
 	 */
@@ -80,8 +83,9 @@ public class ImagenGIF {
 	}
 	
 	/**
-	 * Visibilidad paquete para ser usada por ImagenGIFAnimado
-	 * @return BufferedImage 
+	 * Visibilidad paquete para ser usada por ImagenGIFAnimado.
+	 *
+	 * @return BufferedImage
 	 */
 	BufferedImage getBufferedImage() {
 		return bi;

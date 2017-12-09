@@ -4,12 +4,14 @@
 package modelo.excepciones;
 
 /**
- * @author Tami
+ * The Class ExcepcionCoordenadaIncorrecta.
  *
+ * @author Tami
  */
 public class ExcepcionCoordenadaIncorrecta extends Exception {
+	
 	/**
-	 * Constructor of ExcepcionCoordenadaIncorrecta extends Exception
+	 * Constructor of ExcepcionCoordenadaIncorrecta extends Exception.
 	 */
 	public ExcepcionCoordenadaIncorrecta() {
 		

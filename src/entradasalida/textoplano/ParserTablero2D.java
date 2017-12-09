@@ -11,10 +11,23 @@ import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionEjecucion;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
+/**
+ * The Class ParserTablero2D.
+ */
 public class ParserTablero2D implements IParserTablero{
 
+	/**
+	 * Instantiates a new parser tablero 2 D.
+	 */
 	public ParserTablero2D() {
 	}
+	
+	/**
+	 * It returns an instance of TableroCeldasCuadradas created from a string of lines separated by \n
+	 *
+	 * @param cadena represents string of cells
+	 * @throws ExcepcionLectura excepcion
+	 */
 	@Override
 	public Tablero leeTablero(String cadena) throws ExcepcionLectura {
 		if(cadena==null) {
@@ -52,6 +65,12 @@ public class ParserTablero2D implements IParserTablero{
 		}
 	}
 	
+	/**
+	 * Checks if is uneven.
+	 *
+	 * @param cadena the cadena
+	 * @return true, if is uneven
+	 */
 	public boolean isUneven(String cadena) {
 		//true wenn reihen nicht gleich sind
 		boolean uneven = false;

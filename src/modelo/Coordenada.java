@@ -6,8 +6,10 @@ package modelo;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 
 /**
- * @author Tami
- *abstract Coordenada class
+ * The Class Coordenada.
+ *
+ * @author Tamia
+ * abstract Coordenada class
  */
 public abstract class Coordenada {
 	
@@ -17,7 +19,7 @@ public abstract class Coordenada {
 	public Coordenada() {}
 	
 	/**
-	 * sums to coordenadas
+	 * sums to coordenadas.
 	 *
 	 * @param otra the otra
 	 * @return the coordenada

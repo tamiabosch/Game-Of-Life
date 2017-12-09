@@ -6,7 +6,8 @@ package modelo;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
 /**
- * abstract class Regla
+ * abstract class Regla.
+ *
  * @author Tami
  */
 public abstract class Regla {

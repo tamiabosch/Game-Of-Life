@@ -14,10 +14,26 @@ import modelo.Tablero1D;
 import modelo.TableroCeldasCuadradas;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 
+/**
+ * The Class GeneradorFicheroPlano.
+ */
 public class GeneradorFicheroPlano implements IGeneradorFichero{
 
+	/**
+	 * Instantiates a new generador fichero plano.
+	 */
 	public GeneradorFicheroPlano() {}
+
 	
+	/**
+	 * Plays the game for the number of ticks indicated by the parameter iteraciones. 
+	 * After each update, it writes to the file indicated in the first parameter the result of calling the method generaCadena.
+	 *
+	 * @param file the saved File
+	 * @param juego the juego
+	 * @param iteraciones int of interacion
+	 * @throws ExcepcionGeneracion excepcion
+	 */
 	@Override
 	public void generaFichero(File file, Juego juego, int iteraciones) throws ExcepcionGeneracion {
 		

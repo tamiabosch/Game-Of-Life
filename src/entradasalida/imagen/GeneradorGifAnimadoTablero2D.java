@@ -25,7 +25,8 @@ public class GeneradorGifAnimadoTablero2D implements IGeneradorFichero {
 	public GeneradorGifAnimadoTablero2D() {}
 	
 	/**
-	 * Responsible of generating an animated GIF, which is a sequence of GIFs 
+	 * Responsible of generating an animated GIF, which is a sequence of GIFs .
+	 *
 	 * @param file the saved File
 	 * @param juego the juego
 	 * @param iteraciones int of interacion

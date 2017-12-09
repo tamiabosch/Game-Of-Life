@@ -9,15 +9,15 @@ import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
  * @author Tamia Bosch
  */
 public class Coordenada1D extends Coordenada{
-    /**
-     * private instancevariable x
-     */
+    
+    /** private instancevariable x. */
     private int x;
   
     /**
-     * Constructor for Coordenada using an x and y coordinate
+     * Constructor for Coordenada using an x and y coordinate.
+     *
      * @param x int coordinate
-     * @throws ExcepcionCoordenadaIncorrecta 
+     * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
      */
     public Coordenada1D(int x) throws ExcepcionCoordenadaIncorrecta {
     	if(x >= 0) {
@@ -28,7 +28,8 @@ public class Coordenada1D extends Coordenada{
     }
 
     /**
-     * Constructor for Coordenada copying an other coordenate
+     * Constructor for Coordenada copying an other coordenate.
+     *
      * @param otra Coordenada
      */
     public Coordenada1D(Coordenada1D otra) {
@@ -41,7 +42,8 @@ public class Coordenada1D extends Coordenada{
     }
 
     /**
-     * Returns the coordinates as a String
+     * Returns the coordinates as a String.
+     *
      * @return String coordinate
      */
     @Override
@@ -52,7 +54,9 @@ public class Coordenada1D extends Coordenada{
 
     
     /**
-     * hashCode Method
+     * hashCode Method.
+     *
+     * @return the int
      */
 	@Override
 	public int hashCode() {
@@ -63,7 +67,10 @@ public class Coordenada1D extends Coordenada{
 	}
 
 	/**
-	 * equals method
+	 * equals method.
+	 *
+	 * @param otro the otro
+	 * @return true, if successful
 	 */
 	@Override
 	public boolean equals(Object otro) {
@@ -80,18 +87,20 @@ public class Coordenada1D extends Coordenada{
 	}
 
 	/**
-     * getter for x coordinate
-     * @return int x
-     */
+	 * getter for x coordinate.
+	 *
+	 * @return int x
+	 */
     public int getX() {
         return x;
     }
 
     /**
-     * Summarises two coordinates
-     * @param otra
-     * @return
-     * @throws ExcepcionCoordenadaIncorrecta
+     * Summarises two coordinates.
+     *
+     * @param otra the otra
+     * @return the coordenada 1 D
+     * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
      */
     @Override
     public Coordenada1D suma(Coordenada otra) throws ExcepcionCoordenadaIncorrecta {
